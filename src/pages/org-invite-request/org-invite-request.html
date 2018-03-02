@@ -1,3 +1,5 @@
+<!-- Page for an organization to request an account -->
+
 <ion-content padding>
   <ion-grid padding>
     <ion-row class="centerRow">
@@ -11,13 +13,19 @@
     <ion-row>
       <ion-col>
         <form #f="ngForm" class="formStyle smallMarginTop">
-          <h5>Organization Name</h5>
+          <h6>Organization Name</h6>
           <ion-input class="inputStyle" id="orgName" type="text" name="orgName" required ngModel></ion-input>
-          <h5>Email</h5>
+          <h6>Email</h6>
           <ion-input class="inputStyle" id="orgEmail" type="email" name="orgEmail" ngModel email required></ion-input>
-          <h5>Address</h5>
+          <h6>Address</h6>
           <ion-input class="inputStyle" id="orgAddress" type="text" name="orgAddress" ngModel required></ion-input>
-          <h5>Tell Us About Your Organization</h5>
+          <h6>City</h6>
+          <ion-input class="inputStyle" id="orgCity" type="text" name="orgCity" ngModel required></ion-input>
+          <h6>State</h6>
+          <ion-input class="inputStyle" id="orgState" type="text" name="orgState" ngModel required></ion-input>
+          <h6>Zip</h6>
+          <ion-input class="inputStyle" id="orgZip" type="number" name="orgZip" ngModel required></ion-input>
+          <h6>Tell Us About Your Organization</h6>
           <ion-textarea class="inputStyle" id="orgAbout" type="text" name="orgAbout" rows="5" ngModel required></ion-textarea>
           <div text-center>
             <button [disabled]="!f.valid" ion-button class="smallMarginTop" color="success" (click)="submitOrgInfo(f)">Submit</button>

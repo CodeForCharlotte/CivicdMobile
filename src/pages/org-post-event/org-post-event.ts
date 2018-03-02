@@ -46,6 +46,7 @@ export class OrgPostEventPage {
 );
   }
 
+  // This function creates an action sheet with buttons for getting an image from phone library or taking one with the camera on their phone.  
   uploadPic() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',

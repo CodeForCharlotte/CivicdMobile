@@ -19,11 +19,13 @@
           <ion-label stacked><strong>Event Location*</strong></ion-label>
           <ion-input class="inputStyle" type="text" name="eventLocation" ngModel required></ion-input>
           <div text-center>
+            <!-- if event date has not been selected -->
             <div *ngIf="eventDate === ''">
               <button ion-button clear icon-start (click)="selectDate()" class="calendarBtnStyle">
                 <ion-icon name="md-calendar"></ion-icon><label class="dateDisplayStyle">Tap to Enter Event Date*</label>
               </button>
             </div>
+            <!-- if event date has been selected -->
             <div *ngIf="eventDate !=''">
               <button ion-button clear icon-only (click)="selectDate()" class="calendarBtnStyle">
                 <ion-icon name="md-calendar"></ion-icon><label class="dateDisplayStyle"><strong>Date: {{eventDate | date:'mediumDate'}} {{eventDate | date:'shortTime'}} </strong></label>

@@ -21,6 +21,7 @@ export class EventsAllPage {
   myEventsArr = [];
   myInput;
 
+  // array to store user info
   currentUserInfo = {
     Email: "jsander112@hotmail.com",
     FirstName: "John",
@@ -34,6 +35,8 @@ export class EventsAllPage {
     ZipCode: "28211",
     Tags: [{Name: "Transit"}, {Name:"Privacy"}, {Name:"Civil Rights"}, {Name:"Police"}, {Name:"Feminism"}, {Name:"Inequality"}]
   };
+
+  // array to store all events
 
   allEventsArr = [
     {
@@ -50,7 +53,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28270",
     Tags: [{Name: "Liberal"}, {Name:"Conservative"}, {Name:"Moderate"}, {Name:"Activism"}],
-    ImageUrl: "assets/imgs/default_portfolio.png"
+    ImageUrl: "assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Dems For All",
@@ -66,7 +69,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28211",
     Tags: [{Name: "Transit"}, {Name:"Feminism"}, {Name:"Civil Rights"}, {Name:"Town Hall"}],
-    ImageUrl: "assets/imgs/default_portfolio.png"
+    ImageUrl: "assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Libs For Everyone",
@@ -82,7 +85,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28277",
     Tags: [{Name: "Taxes"}, {Name:"Voting Rights"}, {Name:"Inequality"}],
-    ImageUrl: "assets/imgs/default_portfolio.png"
+    ImageUrl: "assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Education For Us",
@@ -98,7 +101,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28206",
     Tags: [{Name: "Police"}, {Name:"Privacy"}, {Name:"Nutrition"}],
-    ImageUrl: "assets/imgs/default_portfolio.png"
+    ImageUrl: "assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Guns For Us",
@@ -114,14 +117,17 @@ export class EventsAllPage {
     State: "NC",
     Zip: "564245",
     Tags: [{Name: "Social Media"}, {Name:"Grass Roots"}, {Name:"Socialism"}],
-    ImageUrl: "assets/imgs/default_portfolio.png"
+    ImageUrl: "assets/imgs/handshake.jpg"
     }
  ];
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventsAllPage');
+    // call function to load the suggestedEventsArr when the page first loads
     this.getSuggestedEvents();
   }
+
+  //Start Searchbar methods
 
   //function being ran during each event like a keystrok in the search input field.
   onInput(event) {
@@ -157,6 +163,9 @@ export class EventsAllPage {
     this.myInput = "";
   }
 
+  //END SEARCHBAR METHODS
+
+  //function for loading the selected events array
   getSuggestedEvents() {
     for (var i = 0; i < this.allEventsArr.length; i++) {
       for (var j = 0; j < this.allEventsArr[i].Tags.length; j++) {
@@ -178,6 +187,7 @@ export class EventsAllPage {
     });
   }
 
+  // loads an object with info from selected event and sends it with transition to events-selected page
   selectEvent(event) {
     this.navCtrl.push(EventsSelectedPage, {
       OrganizationUserName: event.OrganizationUserName,

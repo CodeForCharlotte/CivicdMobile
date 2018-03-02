@@ -36,7 +36,7 @@ export class UserRegisterAuthInfoPage {
   }
 
 
-
+// function for that generates action sheet for user to select image from library or take one with their camera
   uploadPic() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
