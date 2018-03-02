@@ -34,6 +34,7 @@ export class UserRegisterFinalPage {
     this.viewCtrl.showBackButton(false);
   }
 
+// set the three tag arrays to display up to 9 tags.  if there are more than nine, then the 9th tag will be truncated
   setTagArrays(array) {
     console.log(array);
     this.firstTagsArr = [];

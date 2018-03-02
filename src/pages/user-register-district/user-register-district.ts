@@ -26,6 +26,8 @@ export class UserRegisterDistrictPage {
   userState = this.registerService.getUserState();
   userZip = this.registerService.getUserZip();
   fromFinal = false;
+
+  //test address
   userAddress = "612 Abbey Rd. Lindale TX";
 
   ionViewDidLoad() {
@@ -51,7 +53,7 @@ export class UserRegisterDistrictPage {
     this.navCtrl.pop({animate: true, animation: "ios-transition"});
   }
 
-  //start test district calls using google API.  This will be moved when we figure out how we are handling upcoming elections. 
+  //start test district calls using google API.  This will be moved when we figure out how we are handling upcoming elections.
 
   voteAreas = [];
   electionArr = [];

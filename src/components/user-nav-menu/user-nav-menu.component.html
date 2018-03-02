@@ -1,10 +1,12 @@
-
+<!-- Nav bar with side menu and profile. no title -->
 <ion-navbar>
   <ion-buttons left>
+    <!-- This button triggers the side menu defined on the app.html file -->
     <button ion-button menuToggle>
     <ion-icon name="menu"></ion-icon>
     </button>
   </ion-buttons>
+  <!-- Triggers dropdown from the portfolio icon -->
   <ion-buttons right>
     <div (click)="showPortfolioMenu($event)">
         <img text-right class="defaultNavImgStyle" [src]="portfolioPic">

@@ -1,4 +1,4 @@
-
+//Service for storing user information during the registration process before submitting to database.
 
 export class RegisterService {
   userName = "";

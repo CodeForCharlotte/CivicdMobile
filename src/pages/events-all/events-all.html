@@ -5,6 +5,7 @@
 </ion-header>
 <
 <ion-content padding>
+  <!-- search bar with settings -->
   <ion-searchbar
   placeholder="Search Events"
   [(ngModel)]="myInput"
@@ -16,6 +17,7 @@
   (ionBlur)="onBlur()"
   (ionFocus)="setSearchItems()"></ion-searchbar>
 
+<!-- Using if statements based on show showSuggEvents status to show events from suggestedEventsArr -->
   <ion-card *ngIf="showSuggEvents">
 
     <button (click)="showSuggEvents = false" ion-item>Suggested Events <ion-icon name="remove-circle" item-end></ion-icon></button>
@@ -50,6 +52,8 @@
   <ion-card *ngIf="!showSuggEvents" (click)="showSuggEvents = true">
     <button ion-item>Suggested Events <ion-icon name="add-circle" item-end></ion-icon></button>
   </ion-card>
+
+  <!-- Using if statements based on show showMyEvents status to show events from myEventsArr -->
 
   <ion-card *ngIf="showMyEvents">
 
@@ -88,6 +92,8 @@
   <ion-card *ngIf="!showMyEvents" (click)="showMyEvents = true">
     <button ion-item>My Events <ion-icon name="add-circle" item-end></ion-icon></button>
   </ion-card>
+
+  <!-- Using if statements based on show showAllEvents status to show events from allEventsArr -->
 
   <ion-card *ngIf="showAllEvents">
 

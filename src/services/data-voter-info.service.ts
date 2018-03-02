@@ -5,8 +5,10 @@ import { Injectable } from "@angular/core";
 
 export class DataVoterInfoService {
   constructor(private _http: HttpClient) {}
-
+  //test api service for google civic api.  calls are being made on user-register-district page
   key = "";
+
+
 
   getElectionInfo() {
     var searchType = "elections"

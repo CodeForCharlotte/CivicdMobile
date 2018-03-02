@@ -27,7 +27,16 @@
           <h6 text-center>Click Tags Above to Add Your Interests</h6>
           <h6 text-center>Or</h6>
         </div>
-        <ion-searchbar placeholder="Search for other interests" [(ngModel)]="myInput" color="danger" showCancelButton (ionInput)="onInput($event)" (ionClear)="onCancel()" (ionCancel)="onCancel()" (ionBlur)="onBlur()" (ionFocus)="setSearchItems()"></ion-searchbar>
+        <ion-searchbar
+        placeholder="Search for other interests"
+        [(ngModel)]="myInput"
+        color="danger"
+        showCancelButton
+        (ionInput)="onInput($event)"
+        (ionClear)="onCancel()" 
+        (ionCancel)="onCancel()"
+        (ionBlur)="onBlur()"
+        (ionFocus)="setSearchItems()"></ion-searchbar>
         <ion-list>
           <button type="button" ion-item *ngFor="let item of searchArr" (click)="addSearchTag(item)" >
             #{{ item }}

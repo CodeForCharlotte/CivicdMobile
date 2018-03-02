@@ -1,3 +1,5 @@
+// This component is for a popover menu that shows up from a click on the navbar profile icon //
+
 import { Component } from "@angular/core";
 import { ViewController, NavController, App } from "ionic-angular";
 import { UserLoginPage } from "../../pages/user-login/user-login";
