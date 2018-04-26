@@ -13,6 +13,10 @@ export class OrgPostEventPage {
   placeImage= "";
   imageLoad = false;
   imageUploaded = false;
+  allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
+  searchArr = [];
+  selectedTagsArr = [];
+  myInput = "";
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -46,7 +50,7 @@ export class OrgPostEventPage {
 );
   }
 
-  // This function creates an action sheet with buttons for getting an image from phone library or taking one with the camera on their phone.  
+  // This function creates an action sheet with buttons for getting an image from phone library or taking one with the camera on their phone.
   uploadPic() {
     let actionSheet = this.actionSheetCtrl.create({
       title: 'Select Image Source',
@@ -117,6 +121,87 @@ export class OrgPostEventPage {
       ]
     });
     actionSheet.present();
+  }
+
+  setSearchItems() {
+    //for putting the tags in the array that the search bar is pulling from.
+    this.searchArr = [];
+    for (var i = 0; i < this.allTagsArr.length; i++) {
+      this.searchArr.push(this.allTagsArr[i]);
+    }
+    //removes tags that have already been selected from the search array.
+    for(var j = 0; j < this.selectedTagsArr.length; j++) {
+      this.searchArr = this.searchArr.filter((index) => index != this.selectedTagsArr[j]);
+    }
+  }
+
+  //function being ran during each event like a keystrok in the search input field.
+  onInput(event) {
+    console.log("Got Input");
+    let val = event.target.value;
+    console.log(event.target.value);
+    //if statement is to prevent the array being reset when we are doing a cancel event.
+    if (val != undefined) {
+    this.setSearchItems();
+    }
+    //checks to remove tags that do not match the string entered in the search input.
+    if (val && val.trim() !== '') {
+      this.searchArr = this.searchArr.filter(function(item) {
+        return item.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+  }
+
+  onCancel() {
+    this.searchArr = [];
+    console.log("GOT CANCEL");
+  }
+  onBlur() {
+    setTimeout(() => {this.searchArr = []}, 0);
+    this.myInput = "";
+  }
+
+  addTag(tag) {
+    for (var i = 0; i < this.selectedTagsArr.length; i++) {
+      if (tag == this.selectedTagsArr[i]) {
+        var newSelectArray = this.selectedTagsArr.filter((index) => index != tag);
+        this.selectedTagsArr = newSelectArray;
+        return;
+      }
+    }
+    this.selectedTagsArr.push(tag);
+    this.searchArr=[];
+  }
+
+  isActive(tag) {
+    //add or remove class depending on if the tag has been selected. set to tags displayed at the top of the page.
+    for (var i = 0; i < this.selectedTagsArr.length; i++) {
+      if (tag == this.selectedTagsArr[i]) {
+        return true;
+      }
+    }
+      return false;
+  }
+
+  submitEvent(form) {
+    var postEventObj = {
+      OrganizationUserName: "Kemba Walker",
+      DisplayTitle: form.value.eventName,
+      Description: form.value.eventDescription,
+      CategoryName: form.value.eventType,
+      StartTime: this.eventDate,
+      AddressDisplayName: form.value.locationTitle,
+      StreetAddressOne: form.value.eventAddress,
+      StreetAddressTwo: form.value.eventAddressTwo,
+      City: form.value.eventCity,
+      State: form.value.eventState,
+      ZipCode: form.value.eventZip,
+      Website: form.value.eventWebsite,
+
+
+    }
+
+
   }
 
 }
