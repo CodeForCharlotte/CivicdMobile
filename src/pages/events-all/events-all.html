@@ -15,7 +15,22 @@
   (ionClear)="onCancel()"
   (ionCancel)="onCancel()"
   (ionBlur)="onBlur()"
-  (ionFocus)="setSearchItems()"></ion-searchbar>
+  (ionFocus)="setSearchItems()">
+  </ion-searchbar>
+  <ion-item-group>
+    <ion-item-divider *ngIf="searchBarSelected == true" color="dark">Event Title Matches</ion-item-divider>
+    <button type="button" ion-item *ngFor="let item of matchedEventTitleArr" (click)="selectEvent(item)" >
+      <h4>{{ item.DisplayTitle }}</h4>
+      <small>{{ item.OrganizationUserName}}</small>
+    </button>
+    <button ion-item *ngIf="matchedEventTitleArr.length == 0 && searchBarSelected == true">No matching event titles</button>
+    <ion-item-divider *ngIf="searchBarSelected == true" color="dark">Event Organization Matches</ion-item-divider>
+    <button type="button" ion-item *ngFor="let item of matchedOrgTitleArr" (click)="selectEvent(item)" >
+      <h4>{{ item.OrganizationUserName }}</h4>
+      <small>{{ item.DisplayTitle}}</small>
+    </button>
+    <button ion-item *ngIf="matchedOrgTitleArr.length == 0 && searchBarSelected == true">No matching organizations</button>
+  </ion-item-group>
 
 <!-- Using if statements based on show showSuggEvents status to show events from suggestedEventsArr -->
   <ion-card *ngIf="showSuggEvents">

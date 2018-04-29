@@ -16,10 +16,13 @@ export class EventsAllPage {
   showSuggEvents = false;
   showMyEvents = false;
   showAllEvents = false;
+  searchBarSelected = false;
   searchArr = [];
   suggestedEventsArr = [];
   myEventsArr = [];
-  myInput;
+  matchedEventTitleArr = [];
+  matchedOrgTitleArr = []
+  myInput = "";
 
   // array to store user info
   currentUserInfo = {
@@ -133,16 +136,26 @@ export class EventsAllPage {
   onInput(event) {
     console.log("Got Input");
     let val = event.target.value;
-    console.log(event.target.value);
+    console.log("value", event.target.value);
     //if statement is to prevent the array being rest when we are doing a cancel event.
     if (val != undefined) {
     this.setSearchItems();
     }
     //checks to remove tags that do not match the string entered in the search input.
     if (val && val.trim() !== '') {
-      this.searchArr = this.searchArr.filter(function(item) {
-        return item.toLowerCase().includes(val.toLowerCase());
+      this.searchBarSelected = true;
+      this.matchedEventTitleArr = this.searchArr.filter(function(item) {
+        return item.DisplayTitle.toLowerCase().includes(val.toLowerCase());
       });
+      this.matchedOrgTitleArr = this.searchArr.filter(function(item) {
+        return item.OrganizationUserName.toLowerCase().includes(val.toLowerCase());
+      });
+      console.log("got here", this.matchedEventTitleArr);
+      console.log(this.matchedOrgTitleArr);
+    } else {
+      this.matchedEventTitleArr = [];
+      this.matchedOrgTitleArr = [];
+      this.searchBarSelected = false;
     }
   }
 
@@ -156,11 +169,20 @@ export class EventsAllPage {
 
   onCancel() {
     this.searchArr = [];
+    this.matchedEventTitleArr = [];
+    this.matchedOrgTitleArr = [];
+    this.searchBarSelected = false;
     console.log("GOT CANCEL");
   }
   onBlur() {
-    setTimeout(() => {this.searchArr = []}, 0);
+    setTimeout(() => {
+      this.searchArr = [];
+      this.matchedEventTitleArr = [];
+      this.matchedOrgTitleArr = [];
+      this.searchBarSelected = false;
+    }, 0);
     this.myInput = "";
+
   }
 
   //END SEARCHBAR METHODS
@@ -189,6 +211,7 @@ export class EventsAllPage {
 
   // loads an object with info from selected event and sends it with transition to events-selected page
   selectEvent(event) {
+  console.log("eventselected");
     this.navCtrl.push(EventsSelectedPage, {
       OrganizationUserName: event.OrganizationUserName,
       DisplayTitle: event.DisplayTitle,
