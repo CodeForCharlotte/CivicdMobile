@@ -6,20 +6,26 @@
 </ion-header>
 <ion-content padding>
   <!-- search bar with settings -->
-  <ion-searchbar
-  placeholder="Search Events"
-  [(ngModel)]="myInput"
-  color="danger"
-  showCancelButton
-  (ionInput)="onInput($event)"
-  (ionClear)="onCancel()"
-  (ionCancel)="onCancel()"
-  (ionBlur)="onBlur()"
-  (ionFocus)="setSearchItems()">
-  </ion-searchbar>
-  <button (click)="toggleFilterMenu()" right clear ion-button icon-right>
-    <ion-icon color="dark" name="ios-funnel"></ion-icon>
-  </button>
+  <ion-row>
+    <ion-col col-9>
+      <ion-searchbar
+      placeholder="Search Events"
+      [(ngModel)]="myInput"
+      color="danger"
+      showCancelButton
+      (ionInput)="onInput($event)"
+      (ionClear)="onCancel()"
+      (ionCancel)="onCancel()"
+      (ionBlur)="onBlur()"
+      (ionFocus)="setSearchItems()">
+      </ion-searchbar>
+    </ion-col>
+    <ion-col col-2>
+      <button (click)="toggleFilterMenu()" right clear ion-button icon-left>
+        <ion-icon class="funnelStyle" color="dark" name="ios-funnel"></ion-icon>
+      </button>
+    </ion-col>
+  </ion-row>
 
   <ion-item-group>
     <ion-item-divider *ngIf="searchBarSelected == true" color="dark">Event Title Matches</ion-item-divider>
@@ -35,12 +41,12 @@
     </button>
     <button ion-item *ngIf="matchedOrgTitleArr.length == 0 && searchBarSelected == true">No matching organizations</button>
   </ion-item-group>
-
+  <hr *ngIf="searchBarSelected" />
   <!-- Using if statements based on status of filtered events to show events from filterEventArr -->
 
   <ion-card *ngIf="filterEventArr.length > 0 && showFilterEvents">
     <div *ngIf="showFilterEvents">
-      <button (click)="showFilterEvents = false" ion-item>Filtered Events<ion-icon name="remove-circle" item-end></ion-icon></button>
+      <ion-item (click)="showFilterEvents = false">Filtered Events<ion-icon name="remove-circle" item-end></ion-icon></ion-item>
       <hr/>
 
       <ion-card *ngFor="let filterEvents of filterEventArr" (click)="selectEvent(filterEvents)">
@@ -69,13 +75,13 @@
     </div>
   </ion-card>
   <ion-card *ngIf="!showFilterEvents && filterEventArr.length > 0" (click)="showFilterEvents = true">
-    <button ion-item>Filtered Events <ion-icon name="add-circle" item-end></ion-icon></button>
+    <ion-item>Filtered Events <ion-icon name="add-circle" item-end></ion-icon></ion-item>
   </ion-card>
 
 <!-- Using if statements based on show showSuggEvents status to show events from suggestedEventsArr -->
   <ion-card *ngIf="showSuggEvents">
 
-    <button (click)="showSuggEvents = false" ion-item>Suggested Events <ion-icon name="remove-circle" item-end></ion-icon></button>
+    <ion-item (click)="showSuggEvents = false">Suggested Events <ion-icon name="remove-circle" item-end></ion-icon></ion-item>
     <hr/>
 
     <ion-card *ngFor="let events of suggestedEventsArr" (click)="selectEvent(events)">
@@ -105,14 +111,14 @@
   </ion-card>
 
   <ion-card *ngIf="!showSuggEvents" (click)="showSuggEvents = true">
-    <button ion-item>Suggested Events <ion-icon name="add-circle" item-end></ion-icon></button>
+    <ion-item>Suggested Events <ion-icon name="add-circle" item-end></ion-icon></ion-item>
   </ion-card>
 
   <!-- Using if statements based on show showMyEvents status to show events from myEventsArr -->
 
   <ion-card *ngIf="showMyEvents">
 
-    <button (click)="showMyEvents = false" ion-item>My Events <ion-icon name="remove-circle" item-end></ion-icon></button>
+    <ion-item (click)="showMyEvents = false">My Events <ion-icon name="remove-circle" item-end></ion-icon></ion-item>
     <hr/>
     <div *ngIf="myEventsArr.length > 0">
       <ion-card *ngFor="let events of myEventsArr" (click)="selectEvent(events)">
@@ -145,14 +151,14 @@
   </ion-card>
 
   <ion-card *ngIf="!showMyEvents" (click)="showMyEvents = true">
-    <button ion-item>My Events <ion-icon name="add-circle" item-end></ion-icon></button>
+    <ion-item>My Events <ion-icon name="add-circle" item-end></ion-icon></ion-item>
   </ion-card>
 
   <!-- Using if statements based on show showAllEvents status to show events from allEventsArr -->
 
   <ion-card *ngIf="showAllEvents">
 
-    <button (click)="showAllEvents = false" ion-item>All Events<ion-icon name="remove-circle" item-end></ion-icon></button>
+    <ion-item (click)="showAllEvents = false">All Events<ion-icon name="remove-circle" item-end></ion-icon></ion-item>
     <hr/>
 
     <ion-card *ngFor="let events of allEventsArr" (click)="selectEvent(events)">
@@ -182,7 +188,7 @@
   </ion-card>
 
   <ion-card *ngIf="!showAllEvents" (click)="showAllEvents = true">
-    <button ion-item>All Events<ion-icon name="add-circle" item-end></ion-icon></button>
+    <ion-item>All Events<ion-icon name="add-circle" item-end></ion-icon></ion-item>
   </ion-card>
 
 </ion-content>

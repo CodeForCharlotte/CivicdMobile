@@ -94,7 +94,7 @@ export class EventsAllPage {
     City: "Charlotte",
     State: "NC",
     Zip: "28277",
-    Tags: [{Name: "Taxes"}, {Name:"Voting Rights"}, {Name:"Inequality"}],
+    Tags: [{Name: "Taxes"}, {Name: "Moderate"}, {Name:"Voting Rights"}, {Name:"Inequality"}],
     ImageUrl: "assets/imgs/handshake.jpg"
     },
     {
@@ -139,11 +139,21 @@ export class EventsAllPage {
           this.filterEventArr = [];
           console.log("here is the filter info ", filterInfo);
           for (var i = 0; i < this.allEventsArr.length; i++) {
+            //code for adding event from type filter to filterEventArray
             for (var j = 0; j < filterInfo.typeArr.length; j++) {
               if(this.allEventsArr[i].CategoryName.toLowerCase() == filterInfo.typeArr[j].toLowerCase()) {
                 this.filterEventArr.push(this.allEventsArr[i]);
               }
             }
+            // code for getting adding events from tag filter to filterEventArray
+            for (var m = 0; m < this.allEventsArr[i].Tags.length; m++) {
+              for (var n = 0; n < filterInfo.tagArr.length; n++) {
+                if(this.allEventsArr[i].Tags[m].Name.toLowerCase() == filterInfo.tagArr[n].toLowerCase()) {
+                  this.filterEventArr.push(this.allEventsArr[i]);
+                }
+              }
+            }
+
           }
           console.log("here is the filter array after type: ", this.filterEventArr);
           if (this.filterEventArr.length > 0) {
@@ -151,6 +161,7 @@ export class EventsAllPage {
           } else {
             this.showFilterEvents = false;
           }
+          this.removeFilterDups();
         }
       );
   }
@@ -237,6 +248,12 @@ export class EventsAllPage {
 
   removeSuggestedDups() {
     this.suggestedEventsArr = this.suggestedEventsArr.filter((elem, index, self) => {
+          return index == self.indexOf(elem);
+    });
+  }
+
+  removeFilterDups() {
+    this.filterEventArr = this.filterEventArr.filter((elem, index, self) => {
           return index == self.indexOf(elem);
     });
   }
