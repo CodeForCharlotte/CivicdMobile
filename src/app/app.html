@@ -29,16 +29,37 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <h2 padding>Event Type</h2>
+    <h3 padding>Event Type</h3>
     <ion-list>
       <ion-item *ngFor="let eventType of eventTypeArr">
         <ion-icon (click)="selectEventType(eventType)" name="{{eventType.icon}}" item-start></ion-icon>
           {{eventType.type}}
       </ion-item>
     </ion-list>
+    <h3 padding>Event Tags</h3>
     <ion-list>
-      <button ion-item menuClose="filterMenu" color="danger">
-        Cancel
+      <ion-item>
+        <ion-searchbar
+        placeholder="Search Tags"
+        [(ngModel)]="myInput"
+        color="danger"
+        showCancelButton
+        (ionInput)="onInput($event)"
+        (ionClear)="onCancel()"
+        (ionCancel)="onCancel()"
+        (ionBlur)="onBlur()"
+        (ionFocus)="setSearchItems()">
+        </ion-searchbar>
+      </ion-item>
+          <button type="button" ion-item *ngFor="let item of searchArr" (click)="addTag(item)" >
+            #{{ item }}
+          </button>
+    </ion-list>
+    <ion-badge class="defaultTagBadgeStyle" *ngFor="let selectedTag of selectedTagsArr" (click)="addTag(selectedTag)">#{{selectedTag}}</ion-badge>
+    <hr />
+    <ion-list>
+      <button text-center ion-item menuClose="filterMenu" color="dark">
+        Done
       </button>
     </ion-list>
   </ion-content>
