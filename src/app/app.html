@@ -29,13 +29,6 @@
     </ion-toolbar>
   </ion-header>
   <ion-content>
-    <h3 padding>Event Type</h3>
-    <ion-list>
-      <ion-item *ngFor="let eventType of eventTypeArr">
-        <ion-icon (click)="selectEventType(eventType)" name="{{eventType.icon}}" item-start></ion-icon>
-          {{eventType.type}}
-      </ion-item>
-    </ion-list>
     <h3 padding>Event Tags</h3>
     <ion-list>
       <ion-item>
@@ -56,6 +49,13 @@
           </button>
     </ion-list>
     <ion-badge class="defaultTagBadgeStyle" *ngFor="let selectedTag of selectedTagsArr" (click)="addTag(selectedTag)">#{{selectedTag}}</ion-badge>
+    <h3 padding>Event Type</h3>
+    <ion-list>
+      <ion-item *ngFor="let eventType of eventTypeArr" (click)="selectEventType(eventType)">
+        <ion-icon name="{{eventType.icon}}" item-start></ion-icon>
+          {{eventType.type}}
+      </ion-item>
+    </ion-list>
     <hr />
     <ion-list>
       <button text-center ion-item menuClose="filterMenu" color="dark">
