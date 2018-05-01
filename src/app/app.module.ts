@@ -8,6 +8,7 @@ import { UserNavMenuComponent } from "../components/user-nav-menu/user-nav-menu.
 import { NavProfilePopover } from "../components/popovers/nav-profile-popover";
 import { RegisterService } from "../services/register.service";
 import { DataVoterInfoService } from "../services/data-voter-info.service";
+import { EventFilterService } from "../services/event-filter.service";
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
 import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-register-auth-info";
@@ -77,6 +78,7 @@ import { HttpClientModule } from '@angular/common/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RegisterService,
     DataVoterInfoService,
+    EventFilterService,
     DatePicker,
     Camera,
     NativeGeocoder,

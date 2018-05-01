@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { EventsSelectedPage } from "../events-selected/events-selected";
+import { EventFilterService } from "../../services/event-filter.service";
 
 
 @IonicPage()
@@ -10,19 +11,25 @@ import { EventsSelectedPage } from "../events-selected/events-selected";
 })
 export class EventsAllPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              public menuCtrl: MenuController,
+              private eventFilterService: EventFilterService) { }
 
   showSuggEvents = false;
   showMyEvents = false;
   showAllEvents = false;
+  showFilterEvents = false;
   searchBarSelected = false;
   searchArr = [];
   suggestedEventsArr = [];
   myEventsArr = [];
   matchedEventTitleArr = [];
-  matchedOrgTitleArr = []
+  matchedOrgTitleArr = [];
+  filterEventArr = [];
+
   myInput = "";
+
 
   // array to store user info
   currentUserInfo = {
@@ -62,7 +69,7 @@ export class EventsAllPage {
     OrganizationUserName: "Dems For All",
     DisplayTitle: "Dem Meetup",
     Description: "Dems Dems Dems Dems Demmmmms Dems Dems",
-    CategoryName:"Community",
+    CategoryName:"Community Meeting",
     StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "2/18/17",
     AddressDisplayName: "The Gate Post House",
@@ -78,7 +85,7 @@ export class EventsAllPage {
     OrganizationUserName: "Libs For Everyone",
     DisplayTitle: "Libs Meetup",
     Description: "Libss Libss Libss Libss Libsmmmms Libss Libss",
-    CategoryName:"information",
+    CategoryName:"informational meeting",
     StartTime: "2016-01-20T19:00:00+0000",
     EndTime: "3/18/17",
     AddressDisplayName: "The Lib House",
@@ -125,10 +132,34 @@ export class EventsAllPage {
  ];
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventsAllPage');
     // call function to load the suggestedEventsArr when the page first loads
     this.getSuggestedEvents();
+    this.eventFilterService.eventFilterInfo.subscribe(
+        (filterInfo: any) => {
+          this.filterEventArr = [];
+          console.log("here is the filter info ", filterInfo);
+          for (var i = 0; i < this.allEventsArr.length; i++) {
+            for (var j = 0; j < filterInfo.typeArr.length; j++) {
+              if(this.allEventsArr[i].CategoryName.toLowerCase() == filterInfo.typeArr[j].toLowerCase()) {
+                this.filterEventArr.push(this.allEventsArr[i]);
+              }
+            }
+          }
+          console.log("here is the filter array after type: ", this.filterEventArr);
+          if (this.filterEventArr.length > 0) {
+            this.showFilterEvents = true;
+          } else {
+            this.showFilterEvents = false;
+          }
+        }
+      );
   }
+
+  toggleFilterMenu() {
+    this.menuCtrl.toggle("filterMenu")
+  }
+
+
 
   //Start Searchbar methods
 
@@ -175,6 +206,7 @@ export class EventsAllPage {
     console.log("GOT CANCEL");
   }
   onBlur() {
+    //use set timeout function to move reset from blur event to bottom of call stack so button clicks can work
     setTimeout(() => {
       this.searchArr = [];
       this.matchedEventTitleArr = [];
