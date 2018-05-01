@@ -15,6 +15,7 @@ import { UserRegisterFinalPage } from "../pages/user-register-final/user-registe
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { EventsSelectedPage } from "../pages/events-selected/events-selected";
+import { EventFilterService } from "../services/event-filter.service";
 
 @Component({
   templateUrl: 'app.html'
@@ -32,9 +33,54 @@ export class MyApp {
   postEventPage = OrgPostEventPage;
   selectedEventPage = EventsSelectedPage;
   @ViewChild('nav') nav: NavController;
+  eventTypeArr = [
+                  {
+                    type: "Rally/Protest",
+                    icon: "md-square-outline",
+                    selected: false
+                  },
+                  {
+                    type: "School Meeting",
+                    icon: "md-square-outline",
+                    selected: false
+                  },
+                  {
+                    type: "Government Meeting",
+                    icon: "md-square-outline",
+                    selected: false
+                  },
+                  {
+                    type: "Internal Organization Meeting",
+                    icon: "md-square-outline",
+                    selected: false
+                  },
+                  {
+                    type: "Informational Meeting",
+                    icon: "md-square-outline",
+                    selected: false
+                  },
+                  {
+                    type: "Community Meeting",
+                    icon: "md-square-outline",
+                    selected: false
+                  },
+                  {
+                    type: "Independent Activity",
+                    icon: "md-square-outline",
+                    selected: false
+                  }
+                ];
+  selectedEventTypeArr = [];
+  selectedEventTagArr = [];
+  typeIconName = "md-square-outline"
 
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+
+  constructor(platform: Platform,
+              statusBar: StatusBar,
+              splashScreen: SplashScreen,
+              private menuCtrl: MenuController,
+              private eventFilterService: EventFilterService) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -47,4 +93,42 @@ export class MyApp {
     this.nav.push(page);
     this.menuCtrl.close();
   }
+
+  selectEventType(event) {
+    console.log(event);
+    if(!event.selected) {
+      event.icon = "md-checkbox-outline";
+      event.selected = true;
+    } else {
+      event.icon = "md-square-outline";
+      event.selected = false;
+    }
+    let newArrayValue = [];
+    for (var i = 0; i < this.eventTypeArr.length; i++) {
+      if(this.eventTypeArr[i].selected) {
+        newArrayValue.push(this.eventTypeArr[i].type);
+      }
+    }
+    this.selectedEventTypeArr = newArrayValue;
+    this.sendFilterInfo();
+
+  }
+
+  updateSelectedTypes(event) {
+    console.log(event);
+    this.selectedEventTypeArr = event;
+    console.log(this.selectedEventTypeArr);
+
+  }
+
+  sendFilterInfo() {
+    let filterInfo = {
+      typeArr: this.selectedEventTypeArr,
+      tagArr: this.selectedEventTagArr
+    };
+    console.log(filterInfo.typeArr);
+
+    this.eventFilterService.eventFilterInfo.next(filterInfo);
+  }
+
 }

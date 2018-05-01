@@ -2,8 +2,8 @@
 
   <app-user-nav-menu></app-user-nav-menu>
 
+
 </ion-header>
-<
 <ion-content padding>
   <!-- search bar with settings -->
   <ion-searchbar
@@ -17,6 +17,10 @@
   (ionBlur)="onBlur()"
   (ionFocus)="setSearchItems()">
   </ion-searchbar>
+  <button (click)="toggleFilterMenu()" right clear ion-button icon-right>
+    <ion-icon color="dark" name="ios-funnel"></ion-icon>
+  </button>
+
   <ion-item-group>
     <ion-item-divider *ngIf="searchBarSelected == true" color="dark">Event Title Matches</ion-item-divider>
     <button type="button" ion-item *ngFor="let item of matchedEventTitleArr" (click)="selectEvent(item)" >
@@ -31,6 +35,42 @@
     </button>
     <button ion-item *ngIf="matchedOrgTitleArr.length == 0 && searchBarSelected == true">No matching organizations</button>
   </ion-item-group>
+
+  <!-- Using if statements based on status of filtered events to show events from filterEventArr -->
+
+  <ion-card *ngIf="filterEventArr.length > 0 && showFilterEvents">
+    <div *ngIf="showFilterEvents">
+      <button (click)="showFilterEvents = false" ion-item>Filtered Events<ion-icon name="remove-circle" item-end></ion-icon></button>
+      <hr/>
+
+      <ion-card *ngFor="let filterEvents of filterEventArr" (click)="selectEvent(filterEvents)">
+        <ion-row>
+          <ion-col col-8 padding>
+            <h2><strong><u>{{filterEvents.DisplayTitle}}</u></strong></h2>
+          </ion-col>
+          <ion-col col-4 padding>
+            <h3 text-right><span class="dateStyle">{{filterEvents.StartTime | date:"shortDate"}}</span></h3>
+            <h3 text-right><span class="dateStyle">{{filterEvents.StartTime | date:"shortTime"}}</span></h3>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col col-6>
+            <ion-card-content>
+              <div text-center><strong>{{filterEvents.AddressDisplayName}}</strong></div>
+            </ion-card-content>
+          </ion-col>
+          <ion-col col-6>
+            <ion-card-content text-center>
+                {{filterEvents.CategoryName | uppercase}}
+            </ion-card-content>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </div>
+  </ion-card>
+  <ion-card *ngIf="!showFilterEvents && filterEventArr.length > 0" (click)="showFilterEvents = true">
+    <button ion-item>Filtered Events <ion-icon name="add-circle" item-end></ion-icon></button>
+  </ion-card>
 
 <!-- Using if statements based on show showSuggEvents status to show events from suggestedEventsArr -->
   <ion-card *ngIf="showSuggEvents">
