@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Platform, App } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { NavController, MenuController } from "ionic-angular";
@@ -16,6 +16,7 @@ import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-req
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { EventsSelectedPage } from "../pages/events-selected/events-selected";
 import { EventFilterService } from "../services/event-filter.service";
+
 
 @Component({
   templateUrl: 'app.html'
@@ -83,8 +84,11 @@ export class MyApp {
   constructor(platform: Platform,
               statusBar: StatusBar,
               splashScreen: SplashScreen,
+              app: App,
               private menuCtrl: MenuController,
               private eventFilterService: EventFilterService) {
+
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
