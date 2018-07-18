@@ -1,34 +1,44 @@
 
-<ion-header>
+    <ion-content>
+      <div class="logoWrapStyle text-center">
+        <img class="logoStyle" src="../../assets/imgs/civicd_logo_full.svg" alt="Civicd Logo" />
+      </div>
+      <div class="handsImgWrap">
+          <form class="loginForm" padding>
+            <div class="inputWrapStyle">
+              <ion-item>
+                <ion-label class="loginLabelStyle">
+                  <ion-icon class="loginIconStyle" name="md-person" start></ion-icon>
+                </ion-label>
+                <ion-input class="inputStyle" id="userName" type="text" name="userName" placeholder="USERNAME"></ion-input>
+              </ion-item>
+            </div>
+            <div class="inputWrapStyle">
+              <ion-item>
+                <ion-label class="loginLabelStyle">
+                  <ion-icon class="loginIconStyle" name="ios-lock" start></ion-icon>
+                </ion-label>
+                <ion-input class="inputStyle" id="password" type="password" name="userPassword" placeholder="PASSWORD"></ion-input>
+              </ion-item>
+            </div>
+          </form>
+          <div *ngIf="loginErrMsg != ''" class="text-center errorMsgStyle">
+            {{loginErrMsg}}
+          </div>
+          <div text-center>
+            <button (click)="logUserIn()" class="logInBtn" ion-button primary type="submit">Sign In</button>
+          </div>
+          <div text-center>
+            <button class="registerBtn" ion-button color="light" type="button" round [navPush]="startRegister">Create Account</button>
+          </div>
+          <div class="footerWrap" text-center>
+            <p text-center>
+              Have an organization?
+            </p>
+            <p>
+              <a [navPush]="inviteRequest"><strong>Get an invite</strong></a> and post your event!
+            </p>
+          </div>
+      </div>
 
-
-
-</ion-header>
-
-
-<ion-content padding>
-  <div class="loginWrapStyle">
-    <h1 class="logInHead" text-center>Civic'd</h1>
-  </div>
-
-    <form padding>
-          <h6>Email</h6>
-          <ion-input class="inputStyle" id="userName" type="text" name="userName"></ion-input>
-          <h6>Password</h6>
-          <ion-input class="inputStyle" id="password" type="password" name="userPassword"></ion-input>
-    </form>
-  <div text-center>
-    <button class="logInBtn" ion-button primary type="submit">Login</button>
-  </div>
-  <div text-center>
-    <button class="registerBtn" ion-button color="light" type="button" round [navPush]="startRegister">Create Account</button>
-  </div>
-  <div>
-    <p>
-      Have an organization?
-    </p>
-    <p>
-      <a [navPush]="inviteRequest"><strong>Get an invite</strong></a> and post your event!
-    </p>
-  </div>
-</ion-content>
+    </ion-content>

@@ -9,6 +9,10 @@ import { NavProfilePopover } from "../components/popovers/nav-profile-popover";
 import { RegisterService } from "../services/register.service";
 import { DataVoterInfoService } from "../services/data-voter-info.service";
 import { EventFilterService } from "../services/event-filter.service";
+import { UserApiService } from "../services/user-api.service";
+import { EventsApiService } from "../services/events-api.service";
+import { TagsApiService } from "../services/tags-api.service";
+import { TokenManagerService } from "../services/token-manager.service";
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserRegisterAboutPage } from "../pages/user-register-about/user-register-about";
 import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-register-auth-info";
@@ -24,6 +28,7 @@ import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { EventsSelectedPage } from "../pages/events-selected/events-selected";
 import { DatePicker } from '@ionic-native/date-picker';
 import { Camera } from '@ionic-native/camera';
+import { HTTP } from '@ionic-native/http';
 import { NativeGeocoder } from '@ionic-native/native-geocoder';
 import { Geolocation } from '@ionic-native/geolocation';
 import { HttpClientModule } from '@angular/common/http';
@@ -79,8 +84,13 @@ import { HttpClientModule } from '@angular/common/http';
     RegisterService,
     DataVoterInfoService,
     EventFilterService,
+    UserApiService,
+    EventsApiService,
+    TokenManagerService,
+    TagsApiService,
     DatePicker,
     Camera,
+    HTTP,
     NativeGeocoder,
     Geolocation
   ]

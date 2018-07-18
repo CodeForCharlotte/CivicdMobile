@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="75.683235mm"
+   height="21.695833mm"
+   viewBox="0 0 75.683235 21.695833"
+   version="1.1"
+   id="svg7177"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="civicd_logo_full.svg">
+  <defs
+     id="defs7171" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="87.115608"
+     inkscape:cy="-55.331417"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7174">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-49.848859,-57.854466)">
+    <g
+       id="Logo"
+       transform="matrix(0.26458333,0,0,0.26458333,50.245734,58.251341)">
+      <ellipse
+         id="Oval-2"
+         cx="41.5"
+         cy="39.5"
+         rx="41.5"
+         ry="39.5"
+         style="fill:#14448c;stroke:#498ccc;stroke-width:3" />
+      <ellipse
+         id="ellipse5325"
+         cx="42"
+         cy="39"
+         rx="33"
+         ry="31"
+         style="fill:#498ccc;stroke:#498ccc;stroke-width:8" />
+      <g
+         id="Hand"
+         transform="translate(13,22)">
+        <path
+           d="m 30.999818,-12 c -2.278431,0 -4.153804,1.924656 -4.153804,4.255813 v 1.5294327 c -0.7391,-0.6825189 -1.704099,-1.1082846 -2.769203,-1.1082846 -1.327971,0 -2.52842,0.6492385 -3.288428,1.662427 -0.54048,0.7150546 -0.865376,1.6075056 -0.865376,2.5712203 V 3.8706358 C 19.185637,3.1862373 18.219739,2.7623512 17.153804,2.7623512 14.873711,2.7623512 13,4.6852836 13,7.0181642 13,16.371739 13,25.690983 13,35.035614 13,42.715654 19.15926,49 26.672939,49 h 8.653759 C 42.84716,49 48.999636,42.715157 48.999636,35.035614 V 24.595537 c 4.85e-4,-0.01489 4.85e-4,-0.02979 0,-0.04398 V 23.531938 13.402245 c 0,-2.331164 -1.869697,-4.233654 -4.153804,-4.233654 -1.059982,0 -2.032872,0.4091042 -2.769202,1.086119 V -1.9364209 c 0,-2.3311571 -1.869697,-4.255813 -4.153805,-4.255813 -1.059981,0 -2.032872,0.4312699 -2.769203,1.1082846 v -2.6598831 c 0,-2.3328806 -1.875234,-4.2558126 -4.153804,-4.2558126 z"
+           id="Path"
+           transform="rotate(90,31,18.5)"
+           inkscape:connector-curvature="0"
+           style="fill:#ffffff" />
+        <path
+           d="m 31.5,-10 c 1.42361,0 2.583333,1.3015749 2.583333,2.8780305 v 5.8909688 c -0.0065,0.044825 -0.0065,0.090068 0,0.1349077 v 25.137812 c -0.0065,0.380116 0.304575,0.729725 0.645834,0.729725 0.341257,0 0.650677,-0.349609 0.645833,-0.729725 V -1.1860315 c 4.52e-4,-0.014966 4.52e-4,-0.030004 0,-0.044969 0,-1.5782112 1.159787,-2.8780306 2.583333,-2.8780306 1.431361,0 2.583334,1.2998194 2.583334,2.8780306 V 16.711728 c -0.0065,0.04461 -0.0065,0.09008 0,0.134908 v 7.195083 c -0.0065,0.380116 0.304575,0.729725 0.645833,0.729725 0.341258,0 0.650677,-0.349609 0.645833,-0.729725 v -7.285022 c 4.52e-4,-0.01511 4.52e-4,-0.03022 0,-0.04461 v -2.383369 c 0,-1.57824 1.159852,-2.855553 2.583334,-2.855553 1.431359,0 2.583333,1.277313 2.583333,2.855553 V 25.63845 c -0.0065,0.04461 -0.0065,0.09008 0,0.134907 V 36.273709 C 47,43.276748 41.849415,49 35.536458,49 H 27.463542 C 21.157495,49 16,43.276245 16,36.273709 c 5.16e-4,-9.479226 0,-18.940182 0,-28.4205661 0,-1.5764556 1.161337,-2.8780306 2.583333,-2.8780306 1.421995,0 2.583334,1.2998194 2.583334,2.8780306 V 24.042079 c 0,1.109193 1.291537,1.143154 1.291537,0 V 7.8531789 -2.3998049 c 0,-0.6470316 0.188389,-1.2484105 0.524804,-1.7313152 0.469909,-0.6827696 1.226179,-1.1242307 2.058529,-1.1242307 1.42361,0 2.583334,1.2790903 2.583334,2.8555459 -0.0065,0.052236 -0.0065,0.1051416 0,0.1573923 V 24.042079 c -0.0065,0.380116 0.304575,0.729797 0.645833,0.729797 0.341258,0 0.650677,-0.349681 0.645833,-0.729797 V -2.2648972 c 0,-0.022449 0,-0.044969 0,-0.067418 v -4.7892227 c 0,-1.5782112 1.159788,-2.8780305 2.583334,-2.8780305 z"
+           id="Shape"
+           transform="rotate(90,31.5,19.5)"
+           inkscape:connector-curvature="0"
+           style="fill:#3c5172" />
+        <polygon
+           id="Star"
+           points="20.18034,27 14,23.214873 7.8196601,27 9.7139186,20.268026 4,15.875388 11.351056,15.499926 14,9 16.648944,15.499926 24,15.875388 18.286081,20.268026 "
+           style="fill:#f5f0f2" />
+      </g>
+      <text
+         id="CIVIC’D"
+         font-size="48"
+         font-weight="normal"
+         style="font-weight:normal;font-size:48px;font-family:'.SFNSDisplay-Regular', '.SF NS Display';fill:#193968">
+        <tspan
+           x="97"
+           y="46"
+           id="tspan5331">CIVIC’D</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

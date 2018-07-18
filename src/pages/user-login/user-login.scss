@@ -1,36 +1,125 @@
 page-user-login {
+  @mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+  @mixin for-tablet-landscape-up {
+    @media (min-width: 900px) { @content; }
+  }
+  ion-content {
+    background: url("../../assets/imgs/hands_gray.svg");
+    background-size: cover;
+  }
   .logInHead {
     font-size: 50px;
   }
 
-  .loginWrapStyle {
-    background: slategray;
-    border-style: solid;
-    border-width: 2px;
-    border-color: gold;
-    padding: 20px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    margin-top: 25px;
-    margin-left: 25px;
-    margin-right: 25px;
-    border-radius: 25px;
+  .logoWrapStyle {
+    padding: 1rem;
+    @include for-tablet-portrait-up {
+      padding: 2rem;
+    }
+    @include for-tablet-landscape-up {
+      padding: 2rem;
+    }
   }
+  .logoStyle {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    width: 80rem;
+    @include for-tablet-portrait-up {
+      margin-top: 10rem;
+    }
+    @include for-tablet-landscape-up {
+      margin-top: 20rem;
+      width: 100rem;
+    }
+  }
+
+  .handsImgWrap {
+    background: url("../../assets/imgs/hands_color.svg");
+    padding-top: 7rem;
+    background-size: cover;
+    background-position: center center;
+    width: 100%;
+  }
+
+  .loginForm {
+
+  }
+
 
   .logInBtn {
     margin-top: 10px;
     padding: 25px;
     padding-right: 50px;
     padding-left: 50px;
+    border-radius: 25px;
+    background-color: rgba(76,141,202,255);
+    font-size: 2rem;
   }
   .registerBtn {
     margin-top: 20px;
-    padding: 25px;
+    padding: 15px;
+    background-color: rgb(62,82,113);
+    color: white;
+    margin-bottom: 3rem;
   }
-  .inputStyle {
+  .inputWrapStyle {
     border-style: solid;
     border-color: black;
     border-width: 1px;
+    border-radius: 25px;
+    margin-bottom: 2rem;
+    background-color: rgba(244,244,244,.5);
+    padding: 1rem;
+
+  }
+
+  .inputStyle {
+    background-color: rgba(244,244,244,.25);
+    border-radius: 25px;
+    font-size: 2.5rem;
+    @include for-tablet-portrait-up {
+      font-size: 2.5rem;
+    }
+    @include for-tablet-landscape-up {
+      font-size: 3.5rem;
+    }
+  }
+
+  .loginIconStyle {
+    font-size: 2.5rem;
+    background-color: rgba(244,244,244,.5);
+    color: black;
+    @include for-tablet-portrait-up {
+      font-size: 2.5rem;
+    }
+    @include for-tablet-landscape-up {
+      font-size: 3.5rem;
+    }
+  }
+
+  .errorMsgStyle {
+    background-color: red;
+    color: white;
+    text-align: center;
+    border-radius: 25px;
+    padding: 5px;
+  }
+  .footerWrap {
+    background-color: rgba(250,250,250,.5);
+    padding: 2rem;
+    padding-bottom: 14rem;
+    @include for-tablet-portrait-up {
+      font-size: 2rem;
+    }
+    @include for-tablet-landscape-up {
+      font-size: 3rem;
+      padding-top: 4rem;
+      padding-bottom: 20rem;
+    }
   }
 
 }

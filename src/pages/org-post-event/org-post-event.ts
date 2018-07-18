@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { DatePicker } from '@ionic-native/date-picker';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { UserApiService } from "../../services/user-api.service";
+import { EventsApiService } from "../../services/events-api.service";
+import { TagsApiService } from "../../services/tags-api.service";
 
 @IonicPage()
 @Component({
@@ -13,7 +16,7 @@ export class OrgPostEventPage {
   placeImage= "";
   imageLoad = false;
   imageUploaded = false;
-  allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
+  allTagsArr = [{Name:"Liberal"}, {Name:"Conservative"}, {Name:"Moderate"}, {Name:"Activism"}, {Name:"Transit"}, {Name:"Feminism"}, {Name:"Civil Rights"}, {Name:"Town Hall"}, {Name:"Net Neutrality"}, {Name:"Taxes"}, {Name:"Voting Rights"}, {Name:"Inequality"}, {Name:"Income Gap"}, {Name:"Socialism"}, {Name:"Libertarism"}, {Name:"Affordable Housing"}, {Name:"Healthcare"}, {Name:"Obesity"}, {Name:"Mental Health"}, {Name:"Entitlements"}, {Name:"Police"}, {Name:"Privacy"}, {Name:"Internet Connectivity"}, {Name:"Nutrition"}, {Name:"Social Media"}, {Name:"Grassroots"}, {Name:"Small Business"}];
   searchArr = [];
   selectedTagsArr = [];
   myInput = "";
@@ -22,12 +25,28 @@ export class OrgPostEventPage {
               public navParams: NavParams,
               private datePicker: DatePicker,
               public actionSheetCtrl: ActionSheetController,
-              private camera: Camera) {
+              private camera: Camera,
+              private userApiService: UserApiService,
+              private eventsApiService: EventsApiService,
+              private tagsApiService: TagsApiService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrgPostEventPage');
     this.eventDate = "";
+
+    this.tagsApiService.getTags()
+    .subscribe(
+      (data) => {
+        console.log("data", data);
+      },
+      (err) => console.log("there was an error getting tags", err)
+    )
+
+  }
+
+  ionViewCanEnter() {
+    return this.userApiService.isLoggedIn();
   }
 
   eventDate;
@@ -185,21 +204,33 @@ export class OrgPostEventPage {
 
   submitEvent(form) {
     var postEventObj = {
-      OrganizationUserName: "Kemba Walker",
-      DisplayTitle: form.value.eventName,
-      Description: form.value.eventDescription,
-      CategoryName: form.value.eventType,
-      StartTime: this.eventDate,
-      AddressDisplayName: form.value.locationTitle,
-      StreetAddressOne: form.value.eventAddress,
-      StreetAddressTwo: form.value.eventAddressTwo,
-      City: form.value.eventCity,
-      State: form.value.eventState,
-      ZipCode: form.value.eventZip,
-      Website: form.value.eventWebsite,
+      OrganizationUserName: "civicdgroup@mailinator.com",
+      DisplayTitle: form.value.DisplayTitle,
+      Description: form.value.Description,
+      CategoryName: parseInt(form.value.CategoryName),
+      StartTime: Date.now(),
+      PhotoUrl: "testPhotoUrl",
+      EndTime: "Test End Time",
+      AddressDisplayName: form.value.AddressDisplayName,
+      StreetAddressOne: form.value.StreetAddressOne,
+      StreetAddressTwo: form.value.StreetAddressTwo,
+      City: form.value.City,
+      State: form.value.State,
+      ZipCode: parseInt(form.value.ZipCode),
+      Tags: this.selectedTagsArr
+    };
 
+    console.log(postEventObj);
 
-    }
+    this.eventsApiService.postEvent(postEventObj)
+    .subscribe(
+      (info) => {
+        console.log("success: ", info);
+      },
+      (err) => {
+        console.log("there was an error creating the event", err);
+      }
+    )
 
 
   }

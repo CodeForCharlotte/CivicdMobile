@@ -15,18 +15,18 @@
       <ion-col>
         <form #f="ngForm" class="formStyle">
           <ion-label stacked><strong>Event Name*</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="eventName" ngModel required></ion-input>
+          <ion-input class="inputStyle" type="text" name="DisplayTitle" ngModel required></ion-input>
           <ion-label stacked><strong>Location Title</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="locationTitle" ngModel required></ion-input>
+          <ion-input class="inputStyle" type="text" name="AddressDisplayName" ngModel></ion-input>
           <ion-label stacked><strong>Address*</strong></ion-label>
-          <ion-input placeholder="Address Line One" class="inputStyle" type="text" name="eventAddress" ngModel required></ion-input>
-          <ion-input placeholder="Address Line Two" class="inputStyle" type="text" name="eventAddressTwo" ngModel required></ion-input>
-          <ion-label stacked><strong>City*</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="eventCity" ngModel required></ion-input>
+          <ion-input class="inputStyle" type="text" name="StreetAddressOne" ngModel></ion-input>
+          <ion-input class="inputStyle" type="text" name="StreetAddressTwo" ngModel></ion-input>
+          <ion-label stacked><strong>City</strong></ion-label>
+          <ion-input class="inputStyle" type="text" name="City" ngModel required></ion-input>
           <ion-label stacked><strong>State*</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="eventState" ngModel required></ion-input>
+          <ion-input class="inputStyle" type="text" name="State" ngModel required></ion-input>
           <ion-label stacked><strong>Zip Code*</strong></ion-label>
-          <ion-input class="inputStyle" type="number" name="eventZip" ngModel required></ion-input>
+          <ion-input class="inputStyle" type="number" name="ZipCode" ngModel required></ion-input>
 
           <div text-center>
             <!-- if event date has not been selected -->
@@ -43,21 +43,19 @@
             </div>
           </div>
           <ion-label stacked><strong>Event Description</strong></ion-label>
-          <ion-textarea class="inputStyle" type="text" name="eventDescription" ngModel></ion-textarea>
+          <ion-textarea class="inputStyle" type="text" name="Description" ngModel></ion-textarea>
           <ion-item class="selectItemStyle">
             <ion-label stacked color="dark"><strong>Event Type:</strong></ion-label>
-            <ion-select ngModel name="eventType">
-              <ion-option value="rally">Rally/Protest</ion-option>
-              <ion-option value="school">School Meeting</ion-option>
-              <ion-option value="government">Government Meeting</ion-option>
-              <ion-option value="internal">Internal Organization Meeting</ion-option>
-              <ion-option value="informational">Informational Meeting</ion-option>
-              <ion-option value="community">Community</ion-option>
-              <ion-option value="activity">Independent Activity</ion-option>
+            <ion-select ngModel name="CategoryName">
+              <ion-option value="0">Rally/Protest</ion-option>
+              <ion-option value="1">School Meeting</ion-option>
+              <ion-option value="2">Government Meeting</ion-option>
+              <ion-option value="3">Internal Organization Meeting</ion-option>
+              <ion-option value="4">Informational Meeting</ion-option>
+              <ion-option value="5">Community</ion-option>
+              <ion-option value="6">Independent Activity</ion-option>
             </ion-select>
           </ion-item>
-          <ion-label stacked><strong>Website</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="eventWebsite" ngModel></ion-input>
           <ion-label stacked><strong>Tags</strong></ion-label>
           <ion-searchbar
           placeholder="Search for other interests"
@@ -73,10 +71,10 @@
           ></ion-searchbar>
           <ion-list>
             <button type="button" ion-item *ngFor="let item of searchArr" (click)="addTag(item)" >
-              #{{ item }}
+              #{{ item.Name }}
             </button>
           </ion-list>
-            <ion-badge class="badgeStyle" *ngFor="let selectedTag of selectedTagsArr" (click)="addTag(selectedTag)">#{{selectedTag}}</ion-badge>
+            <ion-badge class="badgeStyle" *ngFor="let selectedTag of selectedTagsArr" (click)="addTag(selectedTag)">#{{selectedTag.Name}}</ion-badge>
             <hr />
           <div text-center>
             <button *ngIf="!imageLoad" (click)="uploadPic()" ion-button icon-end color="light" class="picBtnStyle" small>Upload Pic +</button>
