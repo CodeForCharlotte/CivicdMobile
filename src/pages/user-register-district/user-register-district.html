@@ -1,33 +1,27 @@
-<ion-header>
-  <app-user-nav-menu></app-user-nav-menu>
-</ion-header>
-
-
 <ion-content padding>
   <ion-grid (swiperight)="swipeRightEvent(f)">
     <ion-row>
+      <ion-col text-center>
+        <img [navPush]="loginPage" class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col>
-        <h1 text-center>Voting District</h1>
         <form #f="ngForm" class="formStyle" padding>
-          <h5><strong>Home Address*</strong></h5>
           <ion-input class="inputStyle" id="userAddressOne" type="text" name="userAddressOne" [(ngModel)]="userAddressOne" required placeholder="Enter your address"></ion-input>
-          <br />
           <ion-input class="inputStyle" id="userAddressTwo" type="text" name="userAddressTwo" [(ngModel)]="userAddressTwo" placeholder="Apt, Suite, etc."></ion-input>
-          <h5><strong>City*</strong></h5>
           <ion-input class="inputStyle" id="userCity" type="text" name="userCity" [(ngModel)]="userCity" required placeholder="Enter your city"></ion-input>
-          <h5><strong>State*</strong></h5>
           <ion-input class="inputStyle" id="userState" type="text" name="userState" [(ngModel)]="userState" required placeholder="Enter your state"></ion-input>
-          <h5><strong>Zip*</strong></h5>
           <ion-input class="inputStyle" id="userZip" type="number" name="userZip" [(ngModel)]="userZip" required placeholder="Enter your Zipcode"></ion-input>
         </form>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-6 text-center>
-        <button *ngIf="!fromFinal" ion-button (click)="goBack()" color="light" icon-left><ion-icon name="arrow-back"></ion-icon>Previous</button>
+      <ion-col col-6 text-left>
+        <ion-icon class="arrowStyle" *ngIf="!fromFinal" (click)="goBack()" name="arrow-back"></ion-icon>
       </ion-col>
-      <ion-col col-6 text-center>
-          <button *ngIf="f.valid" (click)="swipeRightEvent(f)" color="success" ion-button icon-right>Next<ion-icon name="arrow-forward"></ion-icon></button>
+      <ion-col col-6 text-right>
+          <ion-icon class="arrowStyle" *ngIf="f.valid" (click)="swipeRightEvent(f)" name="arrow-forward"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
