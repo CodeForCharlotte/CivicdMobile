@@ -9,13 +9,13 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col col-4>
+      <ion-col col-4 text-center>
         <div *ngFor="let tags of firstColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle"><strong>#{{tags}}</strong></ion-badge></div>
       </ion-col>
-      <ion-col col-4>
+      <ion-col col-4 text-center>
         <div *ngFor="let tags of secondColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
       </ion-col>
-      <ion-col col-4>
+      <ion-col col-4 text-center>
         <div *ngFor="let tags of thirdColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
       </ion-col>
     </ion-row>
