@@ -1,11 +1,43 @@
 page-user-register-interests {
+  @mixin for-phone-only {
+  @media (max-width: 599px) and (max-height: 699px) { @content; }
+}
+@mixin for-tall-phone-only {
+  @media (max-width: 599px) and (min-height: 700px) { @content; }
+}
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) { @content; }
+}
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) { @content; }
+
+}
+  ion-content {
+    background: linear-gradient(rgba(231,231,233,173), rgba(177,195,212,255));
+  }
+  .logoStyle {
+    height: auto;
+    width: 10rem;
+  }
   .titleStyle {
     margin-top: 10px;
   }
   .tagStyle {
-    margin-right: 10px;
-    margin-top: 10px;
-    padding: 10px;
+
+    margin-top: 2rem;
+    padding: .5rem;
+    background-color: rgba(0,0,0,0);
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    color: black;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    @include for-phone-only {
+      font-size: 1.25rem;
+    }
+
   }
   .skipDiv {
     margin-top: 20px;
@@ -14,7 +46,12 @@ page-user-register-interests {
 
   }
   .clickedClass {
-    background: rgb(255,77,0);
+    background: rgb(25,57,104);
+    color: white;
+  }
+  .selectedTag {
+    background: rgb(225,46,82);
+    color: white;
   }
   .badgeMargin {
     margin-top: 7px;
@@ -30,6 +67,17 @@ page-user-register-interests {
   }
   .instructHead {
     margin-top: 10px;
+  }
+
+  .arrowIcon {
+    font-size: 3rem;
+    color: white;
+
+  }
+  .skipLabel {
+    font-size: 3rem;
+    color: white;
+    font-family: sans-serif;
   }
 
 }
