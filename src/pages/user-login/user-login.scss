@@ -9,9 +9,6 @@ page-user-login {
     background: url("../../assets/imgs/hands_gray.svg");
     background-size: cover;
   }
-  .logInHead {
-    font-size: 50px;
-  }
 
   .logoWrapStyle {
     padding: 1rem;
@@ -28,6 +25,7 @@ page-user-login {
     margin-right: auto;
     height: auto;
     width: 80rem;
+    margin-top: 3rem;
     @include for-tablet-portrait-up {
       margin-top: 10rem;
     }
@@ -39,7 +37,7 @@ page-user-login {
 
   .handsImgWrap {
     background: url("../../assets/imgs/hands_color.svg");
-    padding-top: 7rem;
+    padding-top: 5rem;
     background-size: cover;
     background-position: center center;
     width: 100%;

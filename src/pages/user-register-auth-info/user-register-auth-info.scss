@@ -1,21 +1,23 @@
 page-user-register-auth-info {
+  ion-content {
+    background: linear-gradient(rgba(231,231,233,173), rgba(177,195,212,255));
+  }
   .centerRow {
     align-items: center;
   }
-  .civicBtn {
-    font-size: 25px;
-    padding: 25px;
-  }
+
   .formStyle {
     margin-top: 20px;
   }
-  .labelStyle {
-    font-size: 24px;
-  }
+
   .inputStyle {
     border-style: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: white;
+    border-radius: 25px;
+    padding: 1.25rem;
+    font-size: 2rem;
+    margin-bottom: 2rem;
   }
   ion-avatar img {
     width:100% !important;
@@ -23,8 +25,15 @@ page-user-register-auth-info {
     max-width: 250px !important;  //any size
     max-height: 250px !important; //any size
   }
+  .logoStyle {
+    height: auto;
+    width: 12rem;
+  }
   .iconStyle {
-    font-size: 25px;
+    height: auto;
+    font-size: 5rem;
+    color: white;
+    margin-top: 15rem;
   }
   .error {
     color: red;

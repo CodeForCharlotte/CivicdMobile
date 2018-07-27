@@ -9,7 +9,8 @@ export class UserApiService {
 constructor(private http: HttpClient, private tokenManagerService: TokenManagerService) {}
 
   userInfo = {
-    Email: "kembawalker@gmail.com",
+    userName: "civicdgroup@mailinator.com",
+    Email: "civicdgroup@mailinator.com",
     FirstName: "Kemba",
     LastName: "Walker",
     DisplayName: "Kemba Walker",
@@ -30,7 +31,7 @@ constructor(private http: HttpClient, private tokenManagerService: TokenManagerS
       'password': 'Password1!'
     };
 
-    let otherInfo = "grant_type=password&username=getcivicd@gmail.com&password=Password1!";
+    let otherInfo = "grant_type=password&username=civicdgroup@mailinator.com&password=Password1!";
     return this.http.post("http://millennialsvote.azurewebsites.net/token", otherInfo, {headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
 

@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { UserApiService } from "../../services/user-api.service";
 import { EventsApiService } from "../../services/events-api.service";
 import { TagsApiService } from "../../services/tags-api.service";
+import { OrgApiService } from "../../services/org-api.service";
 
 @IonicPage()
 @Component({
@@ -28,7 +29,8 @@ export class OrgPostEventPage {
               private camera: Camera,
               private userApiService: UserApiService,
               private eventsApiService: EventsApiService,
-              private tagsApiService: TagsApiService) {
+              private tagsApiService: TagsApiService,
+              private orgApiService: OrgApiService) {
   }
 
   ionViewDidLoad() {
@@ -41,6 +43,15 @@ export class OrgPostEventPage {
         console.log("data", data);
       },
       (err) => console.log("there was an error getting tags", err)
+    )
+
+    this.orgApiService.getOrgInfo()
+    .subscribe(
+      (info) => {
+        console.log("orgInfo", info);
+      },
+      (err) => {console.log("ERROR GETTING ORG INFO", err)}
+
     )
 
   }
@@ -204,12 +215,11 @@ export class OrgPostEventPage {
 
   submitEvent(form) {
     var postEventObj = {
-      OrganizationUserName: "civicdgroup@mailinator.com",
       DisplayTitle: form.value.DisplayTitle,
       Description: form.value.Description,
       CategoryName: parseInt(form.value.CategoryName),
-      StartTime: Date.now(),
       PhotoUrl: "testPhotoUrl",
+      StartTime: Date.now(),
       EndTime: "Test End Time",
       AddressDisplayName: form.value.AddressDisplayName,
       StreetAddressOne: form.value.StreetAddressOne,
