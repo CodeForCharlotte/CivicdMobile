@@ -1,9 +1,18 @@
 page-user-register-district {
+  ion-content {
+    background: linear-gradient(rgba(231,231,233,173), rgba(177,195,212,255));
+  }
+  .logoStyle {
+    height: auto;
+    width: 10rem;
+  }
   .inputStyle {
     border-style: solid;
     border-width: 1px;
-    border-color: black;
+    border-color: white;
+    border-radius: 25px;
     padding: 2px;
+    margin-top: 2rem;
   }
   .error {
     color: red;
@@ -14,5 +23,9 @@ page-user-register-district {
   .swipeDiv {
     margin-top: 250px;
     color: green;
+  }
+  .arrowStyle {
+    font-size: 5rem;
+    color: white;
   }
 }
