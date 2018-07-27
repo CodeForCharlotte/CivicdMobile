@@ -1,24 +1,22 @@
-<ion-header>
-  <app-user-nav-menu></app-user-nav-menu>
-</ion-header>
+
 
 
 <ion-content padding>
   <ion-grid (swiperight)="swipeRightEvent()">
     <ion-row>
-      <ion-col>
-        <h1 class="titleStyle">Interests</h1>
+      <ion-col text-center>
+        <img [navPush]="loginPage" class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col col-4>
-        <div *ngFor="let tags of firstColArr"><ion-badge [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
+        <div *ngFor="let tags of firstColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle"><strong>#{{tags}}</strong></ion-badge></div>
       </ion-col>
       <ion-col col-4>
-        <div *ngFor="let tags of secondColArr"><ion-badge [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
+        <div *ngFor="let tags of secondColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
       </ion-col>
       <ion-col col-4>
-        <div *ngFor="let tags of thirdColArr"><ion-badge [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
+        <div *ngFor="let tags of thirdColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -33,7 +31,7 @@
         color="danger"
         showCancelButton
         (ionInput)="onInput($event)"
-        (ionClear)="onCancel()" 
+        (ionClear)="onCancel()"
         (ionCancel)="onCancel()"
         (ionBlur)="onBlur()"
         (ionFocus)="setSearchItems()"></ion-searchbar>
@@ -45,15 +43,22 @@
         <div class="skipDiv" text-center *ngIf="selectedInterestArr.length > 0">
           <div class="card">
             <h6>You've Added:</h6>
-            <div *ngFor="let tags of selectedInterestArr; let i = index"><ion-badge [ngClass]="{'badgeMargin': checkIndex(i) }" color="neon" (click)="selectTag(tags)" class="selectedTag">#{{tags}}</ion-badge></div>
+            <div *ngFor="let tags of selectedInterestArr; let i = index"><ion-badge [ngClass]="{'badgeMargin': checkIndex(i) }" (click)="selectTag(tags)" class="selectedTag">#{{tags}}</ion-badge></div>
           </div>
         </div>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col text-center>
-          <button *ngIf="selectedInterestArr.length == 0" (click)="skipTags()" class="skipBtn" color="light" ion-button icon-right>Skip<ion-icon name="arrow-forward"></ion-icon></button>
-          <button *ngIf="selectedInterestArr.length > 0" (click)="swipeRightEvent()" color="success" ion-button icon-right>Next<ion-icon name="arrow-forward"></ion-icon></button>
+      <ion-col col-4>
+
+          <ion-icon class="arrowIcon" (click)="goBack()" name="arrow-back"></ion-icon>
+
+      </ion-col>
+      <ion-col col-4 text-center>
+        <h3 *ngIf="selectedInterestArr.length == 0" (click)="skipTags()" class="skipLabel">Skip</h3>
+      </ion-col>
+      <ion-col col-4 text-right>
+          <ion-icon class="arrowIcon" *ngIf="selectedInterestArr.length > 0" (click)="swipeRightEvent()" color="success" icon-right name="arrow-forward"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-grid>
