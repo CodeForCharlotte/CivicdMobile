@@ -15,13 +15,17 @@ export class UserRegisterAboutPage {
   }
 
   aboutInfo = this.registerService.getUserAbout();
-  name = "";
+  userName = "";
+  firstName = "";
+  lastName = "";
   userAbout = "";
   isFinal = this.navParams.get("final");
 
   ionViewDidLoad() {
-    this.name = this.aboutInfo.name;
+    this.userName = this.aboutInfo.userName;
     this.userAbout = this.aboutInfo.about;
+    this.firstName = this.aboutInfo.firstName;
+    this.lastName = this.aboutInfo.lastName;
   }
   ionViewWillEnter() {
     if(this.navParams.get("noBack"))
@@ -29,8 +33,9 @@ export class UserRegisterAboutPage {
     }
 
   swipeRightEvent(form) {
+    console.log("FORM INFO", form.value);
     if (form.valid) {
-      this.registerService.addUserInfo(form.value.userName, form.value.userAbout);
+      this.registerService.addUserInfo(form.value.firstName, form.value.lastName, form.value.userName, form.value.userAbout);
       if(this.isFinal === true) {
       this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       } else {

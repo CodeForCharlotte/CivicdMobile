@@ -27,6 +27,12 @@ private tokenKey:string = 'app_token';
       return storedToken;
   }
 
+  public getUserFromToken() {
+    let currentToken = JSON.parse(this.retrieve());
+    let tokenUser = currentToken.userName;
+    return tokenUser;
+  }
+
 
   public retrieveToken() {
 

@@ -4,16 +4,28 @@
   <ion-grid (swiperight)="swipeRightEvent(f)">
     <ion-row>
       <ion-col text-center>
-        <img [navPush]="loginPage" class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
+        <img class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <form #f="ngForm" class="formStyle" padding>
-          <ion-input placeholder="Name" class="inputStyle" id="userName" type="text" name="userName" [(ngModel)]="name" required #userName="ngModel"></ion-input>
-          <div *ngIf="!userName.valid && userName.touched">
+            <ion-input placeholder="First Name" class="inputStyle" id="firstName" type="text" name="firstName" [(ngModel)]="firstName" required #fName = "ngModel"></ion-input>
+            <ion-input placeholder="Last Name" class="inputStyle" id="lastName" type="text" name="lastName" [(ngModel)]="lastName" required #lName = "ngModel" ></ion-input>
+          <ion-input placeholder="Display Name" class="inputStyle" id="userName" type="text" name="userName" [(ngModel)]="userName" required #uName = "ngModel"></ion-input>
+          <div *ngIf="!fName.valid && fName.touched">
             <p class="error">
-              Name is required
+              First Name is required
+            </p>
+          </div>
+          <div *ngIf="!lName.valid && lName.touched">
+            <p class="error">
+              Last Name is required
+            </p>
+          </div>
+          <div *ngIf="!uName.valid && uName.touched">
+            <p class="error">
+              Display Name is required
             </p>
           </div>
           <div class="aboutInputWrap">

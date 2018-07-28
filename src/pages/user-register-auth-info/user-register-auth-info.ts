@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { UserLoginPage } from '../user-login/user-login';
+import { RegisterService } from "../../services/register.service";
 import { UserRegisterInterestsPage } from "../user-register-interests/user-register-interests";
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
@@ -13,9 +14,14 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 })
 export class UserRegisterAuthInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private camera: Camera,
+              public actionSheetCtrl: ActionSheetController,
+              private registerService: RegisterService) {
   }
   formValid = false;
+  passMatch = false;
   loginPage = UserLoginPage;
   portfolioPic = "assets/imgs/default_portfolio.png"
   imageLoad = false;
@@ -27,10 +33,27 @@ export class UserRegisterAuthInfoPage {
   }
   swipeRightEvent(form) {
     if (form.valid && !this.imageLoad) {
+      const regObj = {
+        email: form.value.email,
+        pass: form.value.password
+      }
+      this.registerService.addAuthInfo(regObj);
       this.navCtrl.push(UserRegisterInterestsPage, {}, {animate: true, animation: "ios-transition", direction: "forward" });
     }
 
   }
+
+  checkPass(event, currentPass) {
+    console.log("currentPass: ", currentPass);
+    console.log("confirmPass ", event)
+    if(event === currentPass) {
+      console.log("GOT HERE");
+      this.passMatch = true;
+    } else {
+      this.passMatch = false;
+    }
+  }
+
   goBack() {
     this.navCtrl.pop({animate: true, animation: "ios-transition"});
   }
