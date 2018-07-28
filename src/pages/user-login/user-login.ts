@@ -28,9 +28,10 @@ export class UserLoginPage {
 
 
 
-  logUserIn() {
+  logUserIn(form) {
     console.log("running login function");
-    this.userApiService.logInUser()
+    console.log("FORM INFO", form);
+    this.userApiService.logInUser(form.value.userName, form.value.userPassword)
     .subscribe(
       (data: any) => {
         console.log(data);

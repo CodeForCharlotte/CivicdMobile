@@ -60,7 +60,7 @@ export class RegisterService {
       StreetAddressTwo: this.userAddressTwo,
       City: this.userCity,
       State: this.userState,
-      Zip: this.userZip
+      ZipCode: this.userZip
     };
     return userObj;
   }

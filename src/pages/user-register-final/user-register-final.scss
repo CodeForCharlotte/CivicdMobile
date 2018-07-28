@@ -27,6 +27,7 @@ page-user-register-final {
   }
   .titleStyle {
     font-size: 25px;
+    font-family: sans-serif;
   }
   .tagTitleStyle {
     font-size: 25px;
@@ -38,6 +39,7 @@ page-user-register-final {
     border-style: solid;
     border-width: 1px;
     border-color: black;
+    font-family: sans-serif;
   }
   .badgeColor {
     background: rgb(25,57,104);
@@ -45,5 +47,7 @@ page-user-register-final {
   .submitBtn {
     font-size: 30px;
     margin-top: 10px;
+    font-family: sans-serif;
+    color: rgb(225,46,82);
   }
 }

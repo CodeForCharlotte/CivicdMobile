@@ -4,13 +4,13 @@
         <img class="logoStyle" src="../../assets/imgs/civicd_logo_full.svg" alt="Civicd Logo" />
       </div>
       <div class="handsImgWrap">
-          <form class="loginForm" padding>
+          <form #f="ngForm" class="loginForm" padding>
             <div class="inputWrapStyle">
               <ion-item>
                 <ion-label class="loginLabelStyle">
                   <ion-icon class="loginIconStyle" name="md-person" start></ion-icon>
                 </ion-label>
-                <ion-input class="inputStyle" id="userName" type="text" name="userName" placeholder="USERNAME"></ion-input>
+                <ion-input class="inputStyle" id="userName" type="text" name="userName" ngModel placeholder="USERNAME"></ion-input>
               </ion-item>
             </div>
             <div class="inputWrapStyle">
@@ -18,7 +18,7 @@
                 <ion-label class="loginLabelStyle">
                   <ion-icon class="loginIconStyle" name="ios-lock" start></ion-icon>
                 </ion-label>
-                <ion-input class="inputStyle" id="password" type="password" name="userPassword" placeholder="PASSWORD"></ion-input>
+                <ion-input class="inputStyle" id="password" type="password" ngModel name="userPassword" placeholder="PASSWORD"></ion-input>
               </ion-item>
             </div>
           </form>
@@ -26,7 +26,7 @@
             {{loginErrMsg}}
           </div>
           <div text-center>
-            <button (click)="logUserIn()" class="logInBtn" ion-button primary type="submit">Sign In</button>
+            <button (click)="logUserIn(f)" class="logInBtn" ion-button primary type="submit">Sign In</button>
           </div>
           <div text-center>
             <button class="registerBtn" ion-button color="light" type="button" round [navPush]="startRegister">Create Account</button>

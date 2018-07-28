@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { RegisterService } from "../../services/register.service";
+import { UserApiService } from "../../services/user-api.service";
+import { TokenManagerService } from "../../services/token-manager.service";
 import { UserRegisterInterestsPage } from "../user-register-interests/user-register-interests";
 import { UserRegisterAboutPage } from "../user-register-about/user-register-about";
 import { UserRegisterDistrictPage } from "../user-register-district/user-register-district";
 import { HomePage } from "../home/home";
+import { UserRegisterAuthInfoPage } from "../user-register-auth-info/user-register-auth-info";
 
 @IonicPage()
 @Component({
@@ -13,7 +16,12 @@ import { HomePage } from "../home/home";
 })
 export class UserRegisterFinalPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService:RegisterService, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private registerService:RegisterService,
+              public viewCtrl: ViewController,
+              private userApiService: UserApiService,
+              private tokenManagerService: TokenManagerService) {
   }
 
   firstTagsArr = [];
@@ -68,8 +76,25 @@ export class UserRegisterFinalPage {
 
   submitAllInfo() {
     console.log("submitting info: ", this.userInfo);
-    this.success = true;
-    setTimeout(() => {this.navCtrl.setRoot(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 3000, })}, 1500);
+    this.userInfo.Tags = [{Name: "Conservative" }]
+    this.userApiService.createUser(this.userInfo)
+    .subscribe(
+      (data) => {
+        console.log("success creating user", data);
+        this.userApiService.logInUser(this.userInfo.Email, this.userInfo.Password)
+        .subscribe(
+          (info) => {
+            console.log("SUCCES LOGGING IN USER", info);
+            this.tokenManagerService.createToken(info);
+            this.success = true;
+            setTimeout(() => {this.navCtrl.setRoot(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 3000, })}, 1500)
+          },
+          (error) => console.log("error logging in user", error)
+        )
+      },
+      (err) => console.log('err submitting user', err)
+    )
+    ;
 
   }
 
@@ -77,7 +102,9 @@ export class UserRegisterFinalPage {
     this.navCtrl.setRoot(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 5000, })
   }
 
-
+  backToAuthInfo() {
+    this.navCtrl.push(UserRegisterAuthInfoPage, {final: true, noBack: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
+  }
   backToTags() {
     this.navCtrl.push(UserRegisterInterestsPage, {final: true, noBack: true}, {animate: true, animation: "ios-transition", direction: "back", duration: 1000, });
   }
