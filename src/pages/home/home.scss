@@ -1,3 +1,22 @@
 page-home {
+  .toolbar-background {
+  background-color: rgb(225,46,82);
+}
+ion-avatar img {
+    width:100% !important;
+    height : 100% !important;
+    max-width: 250px !important;  //any size
+    max-height: 250px !important; //any size
+  }
 
+  .checkedInBox {
+    border-width: .25rem;
+    border-style: solid;
+    border-color: rgb(151,151,151);
+    padding: .25rem;
+  }
+
+  .sectionHead {
+    margin-top: 20rem;
+  }
 }

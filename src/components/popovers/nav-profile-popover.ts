@@ -4,6 +4,7 @@ import { Component } from "@angular/core";
 import { ViewController, NavController, App } from "ionic-angular";
 import { UserLoginPage } from "../../pages/user-login/user-login";
 import { UserSettingsPage } from "../../pages/user-settings/user-settings";
+import { UserApiService } from "../../services/user-api.service";
 import { RegisterService } from "../../services/register.service";
 
 @Component({
@@ -16,9 +17,20 @@ import { RegisterService } from "../../services/register.service";
   `
 })
 export class NavProfilePopover {
-  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public appCtrl: App, private registerService: RegisterService) {}
+  userName = "Hello";
+  constructor(public viewCtrl: ViewController,
+              public navCtrl: NavController,
+              public appCtrl: App,
+              private userApiService: UserApiService,
+              private registerService: RegisterService) {
+                this.userApiService.user$.subscribe(
+                  (data: any) => {
+                    this.userName = data.DisplayName;
+                  }
+                )
+              }
 
-  userName = "Kemba Walker"
+
 
 
   logout() {

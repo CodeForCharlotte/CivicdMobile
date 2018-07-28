@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { UserNavMenuComponent } from "../components/user-nav-menu/user-nav-menu.component";
+import { LogoNavMenuComponent } from "../components/logo-nav-menu/logo-nav-menu";
 import { NavProfilePopover } from "../components/popovers/nav-profile-popover";
 import { RegisterService } from "../services/register.service";
 import { DataVoterInfoService } from "../services/data-voter-info.service";
@@ -40,6 +41,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     MyApp,
     UserNavMenuComponent,
+    LogoNavMenuComponent,
     NavProfilePopover,
     UserLoginPage,
     UserRegisterAboutPage,

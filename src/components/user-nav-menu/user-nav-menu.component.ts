@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PopoverController, NavParams } from 'ionic-angular';
+import { PopoverController } from 'ionic-angular';
 import { NavProfilePopover } from "../../components/popovers/nav-profile-popover";
 
 @Component({
@@ -7,7 +7,7 @@ import { NavProfilePopover } from "../../components/popovers/nav-profile-popover
   templateUrl: "./user-nav-menu.component.html"
 })
 export class UserNavMenuComponent implements OnInit {
-  constructor(public popoverCtrl: PopoverController, public navParams: NavParams) {}
+  constructor(public popoverCtrl: PopoverController) {}
   portfolioPic = "assets/imgs/default_portfolio.png"
   userName = "Kemba Walker";
 
