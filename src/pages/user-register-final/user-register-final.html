@@ -1,13 +1,11 @@
 
-<ion-header>
-
-<app-user-nav-menu></app-user-nav-menu>
-
-</ion-header>
-
-
 <ion-content padding>
   <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <img class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
+      </ion-col>
+    </ion-row>
     <ion-row>
       <ion-col>
         <div class="tagCardStyle">
@@ -20,7 +18,7 @@
             </ion-col>
           </ion-row>
           <ion-row>
-            <div *ngIf="this.userInfo.userTags.length === 0">
+            <div *ngIf="this.userInfo.Tags.length === 0">
               <h5 text-center padding>You have not selected any interests.</h5>
             </div>
               <ion-col col-4>
@@ -41,7 +39,7 @@
         <div class="cardStyle" padding>
           <ion-row class="rowStyle">
             <ion-col col-9>
-              <div class="titleStyle"><strong>About</strong></div>
+              <div class="titleStyle"><strong>{{userName}}</strong></div>
             </ion-col>
             <ion-col col-3 text-right>
               <button ion-button clear icon-only (click)="backToAbout()"><ion-icon name="create" class="iconStyle"></ion-icon></button>
@@ -49,11 +47,11 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <div *ngIf="this.userInfo.userAbout === ''">
+              <div *ngIf="this.userInfo.ProfileDescription === ''">
                 <h5 text-center>You have not written about yourself.</h5>
               </div>
               <div>
-                {{userInfo.userAbout}}
+                {{userInfo.ProfileDescription}}
               </div>
             </ion-col>
           </ion-row>
@@ -74,13 +72,13 @@
           <ion-row>
             <ion-col>
               <div>
-                {{userInfo.addressOne}}
+                {{userInfo.StreetAddressOne}}
               </div>
               <div>
-                {{userInfo.addressTwo}}
+                {{userInfo.StreetAddressTwo}}
               </div>
               <div>
-                {{userInfo.city}}, {{userInfo.state}} {{userInfo.zip}}
+                {{userInfo.City}}, {{userInfo.State}} {{userInfo.Zip}}
               </div>
             </ion-col>
           </ion-row>

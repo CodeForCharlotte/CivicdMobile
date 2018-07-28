@@ -21,12 +21,14 @@ export class UserRegisterFinalPage {
   thirdTagsArr = [];
   userInfo = this.registerService.getUserInfo();
   userAbout = "";
+  userName = "About";
   success = false;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterFinalPage');
     console.log(this.userInfo);
-    this.setTagArrays(this.userInfo.userTags);
+    this.setTagArrays(this.userInfo.Tags);
+    this.userName = this.userInfo.DisplayName
   }
 
   ionViewWillEnter() {
@@ -62,9 +64,6 @@ export class UserRegisterFinalPage {
       }
       this.thirdTagsArr.splice(-1, 1, "...")
     }
-    console.log(this.firstTagsArr);
-    console.log(this.secondTagsArr);
-    console.log(this.thirdTagsArr);
   }
 
   submitAllInfo() {

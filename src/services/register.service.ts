@@ -9,6 +9,10 @@ export class RegisterService {
   userCity = "";
   userState = "";
   userZip = "";
+  firstName = "";
+  lastName = "";
+  userEmail = "";
+  userPass = "";
 
   addUserTags(tags) {
     this.userTagsArr = [];
@@ -18,11 +22,20 @@ export class RegisterService {
     console.log(this.userTagsArr);
   }
 
-  addUserInfo(name, about) {
-    this.userName = name;
+  addAuthInfo(info) {
+    this.userEmail = info.email;
+    this.userPass = info.pass;
+  }
+
+  addUserInfo(firstName, lastName, userName, about) {
+    console.log("FIRST NAME", firstName);
+    console.log("Last name", lastName);
+    console.log("USer name", userName);
+    console.log("about", about);
+    this.firstName = firstName;
+    this.lastName = lastName
+    this.userName = userName;
     this.userAbout = about;
-    console.log(this.userName);
-    console.log(this.userAbout);
   }
 
   addUserAddress(addressOne, addressTwo, city, state, zip) {
@@ -35,14 +48,19 @@ export class RegisterService {
 
   getUserInfo() {
     var userObj = {
-      userName: this.userName,
-      userAbout: this.userAbout,
-      userTags: this.userTagsArr,
-      addressOne: this.userAddressOne,
-      addressTwo: this.userAddressTwo,
-      city: this.userCity,
-      state: this.userState,
-      zip: this.userZip
+      Email: this.userEmail,
+      Password: this.userPass,
+      FirstName: this.firstName,
+      LastName: this.lastName,
+      DisplayName: this.userName,
+      ProfileDescription: this.userAbout,
+      Tags: this.userTagsArr,
+      Category: 0,
+      StreetAddressOne: this.userAddressOne,
+      StreetAddressTwo: this.userAddressTwo,
+      City: this.userCity,
+      State: this.userState,
+      Zip: this.userZip
     };
     return userObj;
   }
@@ -68,13 +86,18 @@ export class RegisterService {
 
   getUserAbout() {
     var aboutObj = {
-      name: this.userName,
-      about: this.userAbout
+      firstName: this.firstName,
+      lastName: this.lastName,
+      userName: this.userName,
+      about: this.userAbout,
+
     }
     return aboutObj;
   }
 
   resetUserInfo() {
+    this.firstName = "";
+    this.lastName = "";
     this.userName = "";
     this.userAbout = "";
     this.userTagsArr = [];

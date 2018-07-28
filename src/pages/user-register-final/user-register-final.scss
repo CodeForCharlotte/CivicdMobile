@@ -1,14 +1,23 @@
 page-user-register-final {
+  ion-content {
+    background: linear-gradient(rgba(231,231,233,173), rgba(177,195,212,255));
+  }
+  .logoStyle {
+    height: auto;
+    width: 10rem;
+  }
   .cardStyle {
     border-style: solid;
     border-width: 2px;
-    border-color: black;
+    border-color: white;
+    border-radius: 25px;
   }
   .tagCardStyle {
     border-style: solid;
     border-width: 2px;
-    border-color: black;
+    border-color: white;
     padding: 2px;
+    border-radius: 25px;
   }
   .rowStyle {
     align-items: center;
@@ -31,7 +40,7 @@ page-user-register-final {
     border-color: black;
   }
   .badgeColor {
-    background: rgb(255,77,0);
+    background: rgb(25,57,104);
   }
   .submitBtn {
     font-size: 30px;
