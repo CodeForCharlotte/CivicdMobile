@@ -26,9 +26,21 @@ export class HomePage {
               private userApiService: UserApiService) {
   }
   loginPage = UserLoginPage;
+  checkedInAmt = 0;
+  portfolioPic = "../../assets/imgs/default_portfolio.png";
+  userInfo;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
+    this.userApiService.user$.subscribe(
+      (data) => {
+        console.log("User info form Obs", data);
+        this.userInfo = data;
+      },
+      (err) => {
+        console.log("there was an error getting user info", err)
+      }
+    )
   }
 
   ionViewCanEnter() {

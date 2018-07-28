@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { TokenManagerService } from "./token-manager.service";
+import { BehaviorSubject } from "rxjs/BehaviorSubject";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 
@@ -10,6 +12,11 @@ constructor(private http: HttpClient, private tokenManagerService: TokenManagerS
 
   userInfo: object;
 
+  private userSubject = new BehaviorSubject(this.userInfo);
+
+  user$: Observable<object> = this.userSubject.asObservable();
+
+
   createUser(info) {
 
     return this.http.post("http://millennialsvote.azurewebsites.net/api/users", info, {headers: new HttpHeaders().set('Content-Type', 'application/json')});
@@ -17,14 +24,8 @@ constructor(private http: HttpClient, private tokenManagerService: TokenManagerS
 
 
   logInUser(userName, passDigest) {
-    let info = {
-      'grant_type': 'password',
-      'username': 'civicdgroup@mailinator.com',
-      'password': 'Password1!'
-    };
 
     let otherInfo = "grant_type=password&username="+ userName + "&password=" + passDigest;
-    console.log("OTHER INFO", otherInfo);
     return this.http.post("http://millennialsvote.azurewebsites.net/token", otherInfo, {headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')});
   }
 
@@ -62,7 +63,7 @@ constructor(private http: HttpClient, private tokenManagerService: TokenManagerS
       .subscribe(
         (data) => {
           console.log("got user info", data);
-          this.userInfo = data;
+          this.userSubject.next(data);
           return true
         },
         (err) => {

@@ -45,14 +45,7 @@ export class OrgPostEventPage {
       (err) => console.log("there was an error getting tags", err)
     )
 
-    this.orgApiService.getOrgInfo()
-    .subscribe(
-      (info) => {
-        console.log("orgInfo", info);
-      },
-      (err) => {console.log("ERROR GETTING ORG INFO", err)}
-
-    )
+    
 
   }
 
