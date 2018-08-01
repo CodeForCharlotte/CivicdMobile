@@ -10,7 +10,7 @@
 <ion-grid>
   <ion-row>
     <ion-col>
-      <h1>Civic'd Profile</h1>
+      <h1 class="sectionHead">Civic'd Profile</h1>
     </ion-col>
   </ion-row>
   <ion-row>
@@ -22,8 +22,8 @@
       </ion-item>
     </ion-col>
     <ion-col col-6>
-      <h2><strong>{{userInfo?.DisplayName}}</strong></h2>
-      <h5>{{userInfo?.City}}, {{userInfo?.State}}</h5>
+      <div class="userNameHead"><strong>{{userInfo?.DisplayName}}</strong></div>
+      <div class="addressHead">{{userInfo?.City}}, {{userInfo?.State}}</div>
       <div class="checkedInBox" text-center>
         <p>{{checkedInAmt}} Times</p>
         <p>Check'd In</p>
@@ -43,11 +43,18 @@
           Tell other members about yourself by updating your about section.
         </p>
       </div>
+      <h1 class="sectionHead">Interest</h1>
     </ion-col>
   </ion-row>
   <ion-row>
-    <ion-col>
-      <h1 class="sectionHead">Interest</h1>
+    <ion-col col-4 text-center>
+      <div *ngFor="let tags of firstColArr"><ion-badge clear class="tagStyle"><strong>#{{tags?.Name}}</strong></ion-badge></div>
+    </ion-col>
+    <ion-col col-4 text-center>
+      <div *ngFor="let tags of secondColArr"><ion-badge clear class="tagStyle">#{{tags?.Name}}</ion-badge></div>
+    </ion-col>
+    <ion-col col-4 text-center>
+      <div *ngFor="let tags of thirdColArr"><ion-badge clear class="tagStyle">#{{tags?.Tags.Name}}</ion-badge></div>
     </ion-col>
   </ion-row>
 </ion-grid>
