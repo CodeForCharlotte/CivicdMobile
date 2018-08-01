@@ -23,6 +23,7 @@ import { UserRegisterFinalPage } from"../pages/user-register-final/user-register
 import { UserRegisterInterestsPage } from "../pages/user-register-interests/user-register-interests";
 import { UserRegisterTypePage } from "../pages/user-register-type/user-register-type";
 import { EventsAllPage } from "../pages/events-all/events-all";
+import { GetCivicdPage } from "../pages/get-civicd/get-civicd";
 import { HomePage } from "../pages/home/home";
 import { UserSettingsPage } from "../pages/user-settings/user-settings";
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
@@ -51,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserRegisterInterestsPage,
     UserRegisterTypePage,
     EventsAllPage,
+    GetCivicdPage,
     HomePage,
     UserSettingsPage,
     OrgInviteRequestPage,
@@ -73,6 +75,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserRegisterFinalPage,
     UserRegisterInterestsPage,
     UserRegisterTypePage,
+    GetCivicdPage,
     EventsAllPage,
     HomePage,
     UserSettingsPage,
