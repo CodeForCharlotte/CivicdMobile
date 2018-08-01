@@ -22,13 +22,13 @@
               <h5 text-center padding>You have not selected any interests.</h5>
             </div>
               <ion-col col-4>
-                <div *ngFor="let tags of firstTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
+                <div *ngFor="let tags of firstTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags?.Name}}</ion-badge></div>
               </ion-col>
               <ion-col col-4>
-                <div *ngFor="let tags of secondTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
+                <div *ngFor="let tags of secondTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags?.Name}}</ion-badge></div>
               </ion-col>
               <ion-col col-4>
-                <div *ngFor="let tags of thirdTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags}}</ion-badge></div>
+                <div *ngFor="let tags of thirdTagsArr" text-center><ion-badge class="tagStyle badgeColor">#{{tags?.Name}}</ion-badge></div>
               </ion-col>
           </ion-row>
         </div>
@@ -89,7 +89,7 @@
       <ion-col text-center>
         <div *ngIf="!success">
           <button ion-button clear color="dark" icon-only class="submitBtn" (click)="submitAllInfo()"><ion-icon name="md-square-outline"></ion-icon></button>
-          <div (click)="submitAllInfo()" class="submitBtn"><strong>Submit!</strong></div>
+          <div (click)="submitAllInfo()" class="submitBtn"><strong>{{submitMsg}}</strong></div>
         </div>
         <div *ngIf="success">
           <button ion-button clear color="dark" icon-only class="submitBtn"><ion-icon name="md-checkbox-outline"></ion-icon></button>

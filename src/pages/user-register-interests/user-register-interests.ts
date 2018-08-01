@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angul
 import {UserRegisterAboutPage } from "../user-register-about/user-register-about";
 import { UserRegisterFinalPage } from "../user-register-final/user-register-final";
 import { RegisterService } from "../../services/register.service";
+import { TagsApiService } from "../../services/tags-api.service";
 
 @IonicPage()
 @Component({
@@ -11,13 +12,17 @@ import { RegisterService } from "../../services/register.service";
 })
 export class UserRegisterInterestsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private registerService: RegisterService, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private registerService: RegisterService,
+              public viewCtrl: ViewController,
+              private tagsApiService: TagsApiService) {
   }
 
 
 
   aboutPage = UserRegisterAboutPage;
-  allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
+  allTagsArr = [];
   firstColArr = [];
   secondColArr = [];
   thirdColArr = [];
@@ -29,15 +34,26 @@ export class UserRegisterInterestsPage {
 
   ionViewDidLoad() {
     // load the three column array for displaying popular tags
-    for (var i = 0; i < 9; i = i + 3) {
-      this.firstColArr.push(this.allTagsArr[i]);
-      if(this.allTagsArr[i + 1]) {
-        this.secondColArr.push(this.allTagsArr[i + 1]);
-      }
-      if(this.allTagsArr[i + 2]) {
-        this.thirdColArr.push(this.allTagsArr[i + 2]);
-      }
-    }
+    this.tagsApiService.getTags()
+    .subscribe(
+      (tagInfo: any) => {
+        this.allTagsArr = tagInfo;
+        this.firstColArr = [];
+        this.secondColArr = [];
+        this.thirdColArr = [];
+        for (var i = 0; i < 9; i = i + 3) {
+          this.firstColArr.push(this.allTagsArr[i]);
+          if(this.allTagsArr[i + 1]) {
+            this.secondColArr.push(this.allTagsArr[i + 1]);
+          }
+          if(this.allTagsArr[i + 2]) {
+            this.thirdColArr.push(this.allTagsArr[i + 2]);
+          }
+        }
+      },
+      (err) => console.log("there was an error getting the tags", err)
+    )
+
 
   }
   ionViewWillEnter() {
@@ -100,7 +116,7 @@ export class UserRegisterInterestsPage {
     //checks to remove tags that do not match the string entered in the search input.
     if (val && val.trim() !== '') {
       this.searchArr = this.searchArr.filter(function(item) {
-        return item.toLowerCase().includes(val.toLowerCase());
+        return item.Name.toLowerCase().includes(val.toLowerCase());
       });
     }
   }

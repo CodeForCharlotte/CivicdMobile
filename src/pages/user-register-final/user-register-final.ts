@@ -30,6 +30,7 @@ export class UserRegisterFinalPage {
   userInfo = this.registerService.getUserInfo();
   userAbout = "";
   userName = "About";
+  submitMsg = "Submit!";
   success = false;
 
   ionViewDidLoad() {
@@ -76,7 +77,7 @@ export class UserRegisterFinalPage {
 
   submitAllInfo() {
     console.log("submitting info: ", this.userInfo);
-    this.userInfo.Tags = [{Name: "Conservative" }]
+    this.submitMsg = "Submitting..."
     this.userApiService.createUser(this.userInfo)
     .subscribe(
       (data) => {

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { NavController, MenuController } from "ionic-angular";
 import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserRegisterTypePage } from "../pages/user-register-type/user-register-type";
+import { GetCivicdPage } from "../pages/get-civicd/get-civicd";
 import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-register-auth-info";
 import { EventsAllPage } from "../pages/events-all/events-all";
 import { HomePage } from "../pages/home/home";
@@ -33,6 +34,7 @@ export class MyApp {
   orgInviteRequestPage = OrgInviteRequestPage;
   postEventPage = OrgPostEventPage;
   selectedEventPage = EventsSelectedPage;
+  getCivicdPage = GetCivicdPage;
   allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
   searchArr = [];
   selectedTagsArr = [];

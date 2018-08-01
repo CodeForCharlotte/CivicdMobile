@@ -10,13 +10,13 @@
     </ion-row>
     <ion-row>
       <ion-col col-4 text-center>
-        <div *ngFor="let tags of firstColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle"><strong>#{{tags}}</strong></ion-badge></div>
+        <div *ngFor="let tags of firstColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle"><strong>#{{tags?.Name}}</strong></ion-badge></div>
       </ion-col>
       <ion-col col-4 text-center>
-        <div *ngFor="let tags of secondColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
+        <div *ngFor="let tags of secondColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags?.Name}}</ion-badge></div>
       </ion-col>
       <ion-col col-4 text-center>
-        <div *ngFor="let tags of thirdColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags}}</ion-badge></div>
+        <div *ngFor="let tags of thirdColArr"><ion-badge clear [ngClass]="{'clickedClass': isActive(tags) }" (click)="selectTag(tags)" class="tagStyle">#{{tags?.Name}}</ion-badge></div>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -37,13 +37,13 @@
         (ionFocus)="setSearchItems()"></ion-searchbar>
         <ion-list>
           <button type="button" ion-item *ngFor="let item of searchArr" (click)="addSearchTag(item)" >
-            #{{ item }}
+            #{{ item?.Name }}
           </button>
         </ion-list>
         <div class="skipDiv" text-center *ngIf="selectedInterestArr.length > 0">
           <div class="card">
             <h6>You've Added:</h6>
-            <div *ngFor="let tags of selectedInterestArr; let i = index"><ion-badge [ngClass]="{'badgeMargin': checkIndex(i) }" (click)="selectTag(tags)" class="selectedTag">#{{tags}}</ion-badge></div>
+            <div *ngFor="let tags of selectedInterestArr; let i = index"><ion-badge [ngClass]="{'badgeMargin': checkIndex(i) }" (click)="selectTag(tags)" class="selectedTag">#{{tags?.Name}}</ion-badge></div>
           </div>
         </div>
       </ion-col>
