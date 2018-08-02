@@ -22,6 +22,7 @@ import { UserRegisterDistrictPage } from "../pages/user-register-district/user-r
 import { UserRegisterFinalPage } from"../pages/user-register-final/user-register-final";
 import { UserRegisterInterestsPage } from "../pages/user-register-interests/user-register-interests";
 import { UserRegisterTypePage } from "../pages/user-register-type/user-register-type";
+import { AdminCreateOrgPage } from "../pages/admin-create-org/admin-create-org";
 import { EventsAllPage } from "../pages/events-all/events-all";
 import { GetCivicdPage } from "../pages/get-civicd/get-civicd";
 import { HomePage } from "../pages/home/home";
@@ -50,6 +51,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserRegisterDistrictPage,
     UserRegisterFinalPage,
     UserRegisterInterestsPage,
+    AdminCreateOrgPage,
     UserRegisterTypePage,
     EventsAllPage,
     GetCivicdPage,
@@ -75,6 +77,7 @@ import { HttpClientModule } from '@angular/common/http';
     UserRegisterFinalPage,
     UserRegisterInterestsPage,
     UserRegisterTypePage,
+    AdminCreateOrgPage,
     GetCivicdPage,
     EventsAllPage,
     HomePage,
