@@ -7,6 +7,7 @@ import { UserLoginPage } from '../pages/user-login/user-login';
 import { UserRegisterTypePage } from "../pages/user-register-type/user-register-type";
 import { GetCivicdPage } from "../pages/get-civicd/get-civicd";
 import { UserRegisterAuthInfoPage } from "../pages/user-register-auth-info/user-register-auth-info";
+import { AdminCreateOrgPage } from "../pages/admin-create-org/admin-create-org";
 import { EventsAllPage } from "../pages/events-all/events-all";
 import { HomePage } from "../pages/home/home";
 import { UserRegisterInterestsPage } from "../pages/user-register-interests/user-register-interests";
@@ -17,6 +18,7 @@ import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-req
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { EventsSelectedPage } from "../pages/events-selected/events-selected";
 import { EventFilterService } from "../services/event-filter.service";
+
 
 
 @Component({
@@ -35,6 +37,7 @@ export class MyApp {
   postEventPage = OrgPostEventPage;
   selectedEventPage = EventsSelectedPage;
   getCivicdPage = GetCivicdPage;
+  adminCreateOrgPage = AdminCreateOrgPage;
   allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
   searchArr = [];
   selectedTagsArr = [];

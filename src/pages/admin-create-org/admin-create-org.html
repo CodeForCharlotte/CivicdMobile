@@ -1,0 +1,86 @@
+
+<ion-header>
+
+  <logo-nav-menu></logo-nav-menu>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid padding>
+    <ion-row class="centerRow">
+      <ion-col>
+        <h1 text-center>Add Organization</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <form #f="ngForm" class="formStyle smallMarginTop">
+          <ion-list>
+            <ion-item>
+              <ion-label>Category</ion-label>
+              <ion-select name="Category" required ngModel>
+                <ion-option value="0">Regular User</ion-option>
+                <ion-option value="1">Government</ion-option>
+                <ion-option value="2">Educational</ion-option>
+                <ion-option value="3">Volunteer</ion-option>
+                <ion-option value="4">Neighborhood</ion-option>
+                <ion-option value="5">Political</ion-option>
+                <ion-option value="6">Cause</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+          <h6>Organization Name</h6>
+          <ion-input class="inputStyle" id="DisplayName" type="text" name="DisplayName" required ngModel></ion-input>
+          <h6>First Name</h6>
+          <ion-input class="inputStyle" id="FirstName" type="text" name="FirstName" required ngModel></ion-input>
+          <h6>Last Name</h6>
+          <ion-input class="inputStyle" id="LastName" type="text" name="LastName" required ngModel></ion-input>
+          <h6>Email</h6>
+          <ion-input class="inputStyle" id="Email" type="email" name="Email" ngModel email required></ion-input>
+          <h6>Password</h6>
+          <ion-input class="inputStyle" id="Password" type="text" name="Password" required ngModel></ion-input>
+          <h6>Address</h6>
+          <ion-input class="inputStyle" id="StreetAddressOne" type="text" name="StreetAddressOne" ngModel ></ion-input>
+          <h6>Address Two</h6>
+          <ion-input class="inputStyle" id="StreetAddressTwo" type="text" name="StreetAddressTwo" ngModel></ion-input>
+          <h6>City</h6>
+          <ion-input class="inputStyle" id="City" type="text" name="City" ngModel ></ion-input>
+          <h6>State</h6>
+          <ion-input class="inputStyle" id="State" type="text" name="State" ngModel ></ion-input>
+          <h6>Zip</h6>
+          <ion-input class="inputStyle" id="ZipCode" type="number" name="ZipCode" ngModel ></ion-input>
+          <h6>About Organization</h6>
+          <ion-textarea class="inputStyle" id="ProfileDescription" type="text" name="ProfileDescription" rows="5" ngModel ></ion-textarea>
+        </form>
+        <ion-searchbar
+        placeholder="Add Tags"
+        [(ngModel)]="myInput"
+        color="danger"
+        showCancelButton
+        (ionInput)="onInput($event)"
+        (ionClear)="onCancel()"
+        (ionCancel)="onCancel()"
+        (ionBlur)="onBlur()"
+        (ionFocus)="setSearchItems()"></ion-searchbar>
+        <ion-list>
+          <button type="button" ion-item *ngFor="let item of searchArr" (click)="addSearchTag(item)" >
+            #{{ item?.Name }}
+          </button>
+        </ion-list>
+        <div class="skipDiv" text-center *ngIf="selectedInterestArr.length > 0">
+          <div class="card">
+            <h6>You've Added:</h6>
+            <div *ngFor="let tags of selectedInterestArr; let i = index"><ion-badge [ngClass]="{'badgeMargin': checkIndex(i) }" (click)="selectTag(tags)" class="selectedTag">#{{tags?.Name}}</ion-badge></div>
+          </div>
+        </div>
+        <div text-center>
+          <button [disabled]="!f.valid" ion-button class="smallMarginTop" color="success" (click)="submitOrgInfo(f)">{{submitBtnInfo}}</button>
+          <div *ngIf="successMsg != ''" text-center>
+            {{successMsg}}
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

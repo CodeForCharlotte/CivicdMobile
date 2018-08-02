@@ -22,6 +22,12 @@ constructor(private http: HttpClient, private tokenManagerService: TokenManagerS
     return this.http.post("http://millennialsvote.azurewebsites.net/api/users", info, {headers: new HttpHeaders().set('Content-Type', 'application/json')});
   }
 
+  createOrg(info) {
+    let token = this.tokenManagerService.retrieveToken();
+    let bearToken = "bearer " + token;
+    return this.http.post("http://millennialsvote.azurewebsites.net/api/users", info, {headers: new HttpHeaders({'Authorization': "Bearer " + token})});
+  }
+
 
   logInUser(userName, passDigest) {
 
