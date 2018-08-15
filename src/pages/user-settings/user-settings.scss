@@ -1,3 +1,55 @@
 page-user-settings {
+  @mixin for-phone-only {
+  @media (max-width: 599px) and (max-height: 699px) { @content; }
+}
 
+ion-avatar img {
+    width:100% !important;
+    height : 100% !important;
+    max-width: 250px !important;  //any size
+    max-height: 250px !important; //any size
+  }
+  
+  .toolbar-background {
+  background-color: rgb(225,46,82);
+}
+
+
+  .checkedInBox {
+    border-width: .25rem;
+    border-style: solid;
+    border-color: rgb(151,151,151);
+    padding: .25rem;
+  }
+
+  .sectionHead {
+    margin-top: 5rem;
+    font-size: 3rem;
+    font-family: sans-serif;
+  }
+  .userNameHead {
+    font-size: 2.5rem;
+    font-family: sans-serif;
+  }
+  .addressHead {
+    font-size: 1.75rem;
+    font-family: sans-serif;
+  }
+  .tagStyle {
+
+    margin-top: .75rem;
+    padding: .5rem;
+    background: rgb(25,57,104);
+    color: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 25px;
+    font-family: sans-serif;
+    font-size: 1.15rem;
+    @include for-phone-only {
+      font-size: 1.15rem;
+    }
+
+  }
 }

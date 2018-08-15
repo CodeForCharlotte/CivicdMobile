@@ -17,6 +17,7 @@ import { UserRegisterFinalPage } from "../pages/user-register-final/user-registe
 import { OrgInviteRequestPage } from "../pages/org-invite-request/org-invite-request";
 import { OrgPostEventPage } from "../pages/org-post-event/org-post-event";
 import { EventsSelectedPage } from "../pages/events-selected/events-selected";
+import { UserSettingsPage } from "../pages/user-settings/user-settings";
 import { EventFilterService } from "../services/event-filter.service";
 
 
@@ -38,6 +39,7 @@ export class MyApp {
   selectedEventPage = EventsSelectedPage;
   getCivicdPage = GetCivicdPage;
   adminCreateOrgPage = AdminCreateOrgPage;
+  userSettingsPage = UserSettingsPage
   allTagsArr = ["Liberal", "Conservative", "Moderate", "Activism", "Transit", "Feminism", "Civil Rights", "Town Hall", "Net Neutrality", "Taxes", "Voting Rights", "Inequality", "Income Gap", "Socialism", "Libertarism", "Affordable Housing", "Healthcare", "Obesity", "Mental Health", "Entitlements", "Police", "Privacy", "Internet Connectivity", "Nutrition", "Social Media", "Grassroots", "Small Business"];
   searchArr = [];
   selectedTagsArr = [];

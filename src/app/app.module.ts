@@ -10,7 +10,6 @@ import { NavProfilePopover } from "../components/popovers/nav-profile-popover";
 import { RegisterService } from "../services/register.service";
 import { DataVoterInfoService } from "../services/data-voter-info.service";
 import { EventFilterService } from "../services/event-filter.service";
-import { OrgApiService } from "../services/org-api.service";
 import { UserApiService } from "../services/user-api.service";
 import { EventsApiService } from "../services/events-api.service";
 import { TagsApiService } from "../services/tags-api.service";
@@ -97,7 +96,6 @@ import { HttpClientModule } from '@angular/common/http';
     EventsApiService,
     TokenManagerService,
     TagsApiService,
-    OrgApiService,
     DatePicker,
     Camera,
     HTTP,

@@ -1,6 +1,6 @@
 
 <ion-header>
-  <app-user-nav-menu></app-user-nav-menu>
+  <logo-nav-menu></logo-nav-menu>
 </ion-header>
 
 
@@ -8,25 +8,19 @@
   <ion-grid padding>
     <ion-row class="centerRow">
       <ion-col>
-        <h2>Post Event</h2>
+        <h2 class="headerStyle">Post Event</h2>
       </ion-col>
     </ion-row>
     <ion-row class="centerRow">
       <ion-col>
         <form #f="ngForm" class="formStyle">
-          <ion-label stacked><strong>Event Name*</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="DisplayTitle" ngModel required></ion-input>
-          <ion-label stacked><strong>Location Title</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="AddressDisplayName" ngModel></ion-input>
-          <ion-label stacked><strong>Address*</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="StreetAddressOne" ngModel></ion-input>
-          <ion-input class="inputStyle" type="text" name="StreetAddressTwo" ngModel></ion-input>
-          <ion-label stacked><strong>City</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="City" ngModel required></ion-input>
-          <ion-label stacked><strong>State*</strong></ion-label>
-          <ion-input class="inputStyle" type="text" name="State" ngModel required></ion-input>
-          <ion-label stacked><strong>Zip Code*</strong></ion-label>
-          <ion-input class="inputStyle" type="number" name="ZipCode" ngModel required></ion-input>
+          <ion-input placeholder=" Event Name*" class="inputStyle" type="text" name="DisplayTitle" ngModel required></ion-input>
+          <ion-input placeholder=" Location Title"  class="inputStyle" type="text" name="AddressDisplayName" ngModel></ion-input>
+          <ion-input placeholder=" Street Address" class="inputStyle" type="text" name="StreetAddressOne" ngModel></ion-input>
+          <ion-input placeholder=" Street Address Line Two" class="inputStyle" type="text" name="StreetAddressTwo" ngModel></ion-input>
+          <ion-input placeholder=" City" class="inputStyle" type="text" name="City" ngModel required></ion-input>
+          <ion-input placeholder=" State" class="inputStyle" type="text" name="State" ngModel required></ion-input>
+          <ion-input placeholder=" Zip Code" class="inputStyle" type="number" name="ZipCode" ngModel required></ion-input>
 
           <div text-center>
             <!-- if event date has not been selected -->
@@ -42,11 +36,10 @@
               </button>
             </div>
           </div>
-          <ion-label stacked><strong>Event Description</strong></ion-label>
-          <ion-textarea class="inputStyle" type="text" name="Description" ngModel></ion-textarea>
+          <ion-textarea placeholder="Event Description" class="inputStyle" type="text" name="Description" ngModel></ion-textarea>
           <ion-item class="selectItemStyle">
             <ion-label stacked color="dark"><strong>Event Type:</strong></ion-label>
-            <ion-select ngModel name="CategoryName">
+            <ion-select ngModel name="Category">
               <ion-option value="0">Rally/Protest</ion-option>
               <ion-option value="1">School Meeting</ion-option>
               <ion-option value="2">Government Meeting</ion-option>
@@ -76,7 +69,7 @@
           </ion-list>
             <ion-badge class="badgeStyle" *ngFor="let selectedTag of selectedTagsArr" (click)="addTag(selectedTag)">#{{selectedTag.Name}}</ion-badge>
             <hr />
-          <div text-center>
+          <!-- <div text-center>
             <button *ngIf="!imageLoad" (click)="uploadPic()" ion-button icon-end color="light" class="picBtnStyle" small>Upload Pic +</button>
             <button [disabled]="true" *ngIf="imageLoad" ion-button color="success">Image loading...</button>
           </div>
@@ -84,8 +77,8 @@
             <ion-card>
               <img [src]="placeImage" height="250">
             </ion-card>
-          </div>
-          <hr />
+          </div> -->
+
           <div text-center>
             <button [disabled]="!f.valid && !imageLoad && eventDate !=''" ion-button icon-end color="success" class="picBtnStyle" (click)="submitEvent(f)">Submit Event</button>
           </div>
