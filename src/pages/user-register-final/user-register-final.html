@@ -3,7 +3,7 @@
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-        <img (click)="goToAuthInfo()" class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
+        <img class="logoStyle" src="../../assets/icon/small_hand_logo.svg" alt="Civicd Logo" />
       </ion-col>
     </ion-row>
     <ion-row>
@@ -18,7 +18,7 @@
             </ion-col>
           </ion-row>
           <ion-row>
-            <div *ngIf="this.userInfo.Tags.length === 0">
+            <div *ngIf="userInfo?.Tags.length === 0">
               <h5 text-center padding>You have not selected any interests.</h5>
             </div>
               <ion-col col-4>
@@ -47,11 +47,11 @@
           </ion-row>
           <ion-row>
             <ion-col>
-              <div *ngIf="this.userInfo.ProfileDescription === ''">
+              <div *ngIf="userInfo?.ProfileDescription === ''">
                 <h5 text-center>You have not written about yourself.</h5>
               </div>
               <div>
-                {{userInfo.ProfileDescription}}
+                {{userInfo?.ProfileDescription}}
               </div>
             </ion-col>
           </ion-row>
@@ -72,13 +72,13 @@
           <ion-row>
             <ion-col>
               <div>
-                {{userInfo.StreetAddressOne}}
+                {{userInfo?.StreetAddressOne}}
               </div>
               <div>
-                {{userInfo.StreetAddressTwo}}
+                {{userInfo?.StreetAddressTwo}}
               </div>
               <div>
-                {{userInfo.City}}, {{userInfo.State}} {{userInfo.Zip}}
+                {{userInfo?.City}}, {{userInfo?.State}} {{userInfo?.Zip}}
               </div>
             </ion-col>
           </ion-row>
@@ -87,13 +87,17 @@
     </ion-row>
     <ion-row>
       <ion-col text-center>
-        <div *ngIf="!success">
+        <div *ngIf="!success && !currentUser">
           <button ion-button clear color="dark" icon-only class="submitBtn" (click)="submitAllInfo()"><ion-icon name="md-square-outline"></ion-icon></button>
           <div (click)="submitAllInfo()" class="submitBtn"><strong>{{submitMsg}}</strong></div>
         </div>
-        <div *ngIf="success">
+        <div *ngIf="success && !currentUser">
           <button ion-button clear color="dark" icon-only class="submitBtn"><ion-icon name="md-checkbox-outline"></ion-icon></button>
           <div class="submitBtn"><strong>Finished!</strong></div>
+        </div>
+        <div *ngIf="currentUser">
+          <button [navPush]="homePage" ion-button clear color="dark" icon-only class="submitBtn"><ion-icon name="md-checkbox-outline"></ion-icon></button>
+          <div class="submitBtn"><strong>Done!</strong></div>
         </div>
       </ion-col>
     </ion-row>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { RegisterService } from "../../services/register.service";
 import { UserApiService } from "../../services/user-api.service";
@@ -6,6 +6,7 @@ import { TokenManagerService } from "../../services/token-manager.service";
 import { UserRegisterInterestsPage } from "../user-register-interests/user-register-interests";
 import { UserRegisterAboutPage } from "../user-register-about/user-register-about";
 import { UserRegisterDistrictPage } from "../user-register-district/user-register-district";
+import { UserLoginPage } from "../user-login/user-login";
 import { HomePage } from "../home/home";
 import { UserRegisterAuthInfoPage } from "../user-register-auth-info/user-register-auth-info";
 
@@ -14,7 +15,7 @@ import { UserRegisterAuthInfoPage } from "../user-register-auth-info/user-regist
   selector: 'page-user-register-final',
   templateUrl: 'user-register-final.html',
 })
-export class UserRegisterFinalPage {
+export class UserRegisterFinalPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -27,20 +28,46 @@ export class UserRegisterFinalPage {
   firstTagsArr = [];
   secondTagsArr = []
   thirdTagsArr = [];
-  userInfo = this.registerService.getUserInfo();
+  userInfo;
+  homePage = HomePage;
   userAbout = "";
   userName = "About";
   submitMsg = "Submit!";
   success = false;
+  currentUser;
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserRegisterFinalPage');
     console.log(this.userInfo);
-    this.setTagArrays(this.userInfo.Tags);
-    this.userName = this.userInfo.DisplayName
+  }
+
+  ngOnInit() {
+    this.currentUser = this.userApiService.isLoggedIn();
+    if (this.currentUser) {
+      console.log("got here");
+      this.userApiService.user$.subscribe(
+        (data: any) => {
+
+          if(data) {
+            this.userInfo = data;
+            this.setTagArrays(this.userInfo.Tags);
+            this.userName = this.userInfo.DisplayName
+            console.log("User info", this.userInfo)
+          }
+
+        },
+        (err) => console.log("there was an error getting the user info", err)
+      )
+    } else {
+      this.userInfo = this.registerService.getUserInfo();
+      this.setTagArrays(this.userInfo.Tags);
+      this.userName = this.userInfo.DisplayName
+    }
+
   }
 
   ionViewWillEnter() {
+    console.log("GETTING HERE");
     // remove back button from navbar
     this.viewCtrl.showBackButton(false);
   }
@@ -90,7 +117,11 @@ export class UserRegisterFinalPage {
             this.success = true;
             setTimeout(() => {this.navCtrl.setRoot(HomePage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 3000, })}, 1500)
           },
-          (error) => console.log("error logging in user", error)
+          (error) => {
+            console.log("error logging in user", error)
+            this.success = true;
+            setTimeout(() => {this.navCtrl.setRoot(UserLoginPage, {noBack: true}, {animate: true, animation: "ios-transition", direction: "forward", duration: 3000, })}, 1500)
+          }
         )
       },
       (err) => console.log('err submitting user', err)

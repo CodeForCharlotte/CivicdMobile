@@ -40,7 +40,7 @@
             #{{ item?.Name }}
           </button>
         </ion-list>
-        <div class="skipDiv" text-center *ngIf="selectedInterestArr.length > 0">
+        <div class="skipDiv" text-center *ngIf="selectedInterestArr?.length > 0">
           <div class="card">
             <h6>You've Added:</h6>
             <div *ngFor="let tags of selectedInterestArr; let i = index"><ion-badge [ngClass]="{'badgeMargin': checkIndex(i) }" (click)="selectTag(tags)" class="selectedTag">#{{tags?.Name}}</ion-badge></div>

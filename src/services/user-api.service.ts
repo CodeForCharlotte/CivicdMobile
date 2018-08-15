@@ -59,8 +59,16 @@ constructor(private http: HttpClient, private tokenManagerService: TokenManagerS
     return this.userInfo;
   }
 
-  isLoggedIn() {
-    let testToken = this.tokenManagerService.retrieveToken();
+  updateUser(info) {
+    let userEmail = this.tokenManagerService.getUserFromToken()
+    let token = this.tokenManagerService.retrieveToken();
+    let bearToken = "bearer " + token;
+
+    return this.http.put("http://millennialsvote.azurewebsites.net/api/users/" + userEmail + "/", info, {headers: new HttpHeaders({'Authorization': "Bearer " + token})});
+  }
+
+  async isLoggedIn() {
+    let testToken = await this.tokenManagerService.retrieveToken();
     console.log("token: ", testToken);
     if (testToken == undefined || testToken === "invalid token found" || testToken === "no token found" ) {
       return false;

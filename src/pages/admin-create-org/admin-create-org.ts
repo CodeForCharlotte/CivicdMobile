@@ -21,6 +21,7 @@ export class AdminCreateOrgPage {
   myInput = "";
   submitBtnInfo = "Submit";
   successMsg = "";
+  errMsg = "";
   allTagsArr = [];
   selectedInterestArr = [];
 
@@ -116,6 +117,8 @@ export class AdminCreateOrgPage {
   }
 
   submitOrgInfo(form) {
+    this.successMsg = "";
+    this.errMsg = "";
     this.submitBtnInfo = "Submitting..."
     let formValue = form.value;
     formValue.Tags = this.selectedInterestArr;
@@ -125,9 +128,11 @@ export class AdminCreateOrgPage {
         console.log("org is created", data)
         this.successMsg = data.DisplayName + " created successfully!"
         this.submitBtnInfo = "Submit";
+        form.reset();
       },
       (err) => {
         console.log("there was an error creating org", err)
+        this.errMsg = "There was an error creating the organization"
         this.submitBtnInfo = "Submit";
       }
     )

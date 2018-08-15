@@ -1,21 +1,21 @@
 <ion-menu [content]="nav" persistent="true" id="defaultMenu">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
+    <ion-toolbar color="defaultMenuColor">
+      <ion-title tex-center>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content>
-    <ion-list>
-      <button ion-item (click)="onLoad(homePage)">
-        <ion-icon name="home" item-left></ion-icon>
+  <ion-content class="menuContent" color="defaultMenuColor">
+    <ion-list color="defaultMenuColor">
+      <button color="defaultMenuColor" ion-item (click)="onLoad(homePage)">
+        <ion-icon item-left><img src="../../assets/icon/white_house.svg" /></ion-icon>
         Home
       </button>
-      <button ion-item (click)="onLoad(eventsPage)">
-        <ion-icon name="flag" item-left></ion-icon>
+      <button color="defaultMenuColor" ion-item (click)="onLoad(eventsPage)">
+        <ion-icon item-left><img src="../../assets/icon/white_light_bulb.svg" /></ion-icon>
         Events
       </button>
-      <button ion-item (click)="onLoad(postEventPage)">
-        <ion-icon name="md-calendar" item-left></ion-icon>
+      <button color="defaultMenuColor" ion-item (click)="onLoad(postEventPage)">
+        <ion-icon item-left><img src="../../assets/icon/white_pointer.svg" /></ion-icon>
         Post Event
       </button>
     </ion-list>
@@ -67,4 +67,4 @@
 </ion-menu>
 
 <!-- You can change the root here to start at a specific page.  Root names are in the app.component.ts file -->
-<ion-nav [root]="adminCreateOrgPage" #nav></ion-nav>
+<ion-nav [root]="homePage" #nav></ion-nav>

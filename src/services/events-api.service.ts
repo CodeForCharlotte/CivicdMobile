@@ -9,7 +9,8 @@ export class EventsApiService {
 constructor(private http: HttpClient, private tokenManagerService: TokenManagerService) { }
 postEvent(event) {
   let token = this.tokenManagerService.retrieveToken();
-  return this.http.post("http://millennialsvote.azurewebsites.net/api/activities", event, {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token)});
+
+  return this.http.post("http://millennialsvote.azurewebsites.net/api/activities", event, {headers: new HttpHeaders().set('Authorization', 'Bearer ' + token).set("Content-Type", "application/json")});
 }
 
 

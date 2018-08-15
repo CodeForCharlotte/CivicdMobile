@@ -4,19 +4,21 @@ import {UserRegisterAboutPage } from "../user-register-about/user-register-about
 import { UserRegisterFinalPage } from "../user-register-final/user-register-final";
 import { RegisterService } from "../../services/register.service";
 import { TagsApiService } from "../../services/tags-api.service";
+import { UserApiService } from "../../services/user-api.service";
 
 @IonicPage()
 @Component({
   selector: 'page-user-register-interests',
   templateUrl: 'user-register-interests.html',
 })
-export class UserRegisterInterestsPage {
+export class UserRegisterInterestsPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private registerService: RegisterService,
               public viewCtrl: ViewController,
-              private tagsApiService: TagsApiService) {
+              private tagsApiService: TagsApiService,
+              private userApiService: UserApiService) {
   }
 
 
@@ -28,12 +30,34 @@ export class UserRegisterInterestsPage {
   thirdColArr = [];
   searchArr = [];
   myInput = "";
-  selectedInterestArr = this.registerService.getUserTags();
+  selectedInterestArr = [];
   isFinal = this.navParams.get("final");
+  currentUser;
+  userInfo;
 
 
   ionViewDidLoad() {
+    console.log("INTERESTS ION VIEW LOADED")
+
+
+  }
+
+   ngOnInit() {
     // load the three column array for displaying popular tags
+    this.currentUser = this.userApiService.isLoggedIn();
+    console.log("IS LOGGED IN", this.currentUser);
+    if(this.currentUser) {
+      this.userApiService.user$.subscribe(
+        (data: any) => {
+          this.selectedInterestArr = data.Tags;
+          this.userInfo = data;
+          console.log("USER TAGS", this.selectedInterestArr);
+        },
+        (err) => console.log("There was an error getting the user info", err)
+      )
+    } else {
+      this.selectedInterestArr = this.registerService.getUserTags();
+    }
     this.tagsApiService.getTags()
     .subscribe(
       (tagInfo: any) => {
@@ -53,8 +77,6 @@ export class UserRegisterInterestsPage {
       },
       (err) => console.log("there was an error getting the tags", err)
     )
-
-
   }
   ionViewWillEnter() {
     // remove back button from navbar
@@ -143,13 +165,25 @@ export class UserRegisterInterestsPage {
   }
 
   swipeRightEvent() {
-    if (this.selectedInterestArr.length > 0) {
+    if (this.selectedInterestArr.length > 0 && !this.currentUser) {
       this.registerService.addUserTags(this.selectedInterestArr);
       if(this.isFinal === true) {
       this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       } else {
       this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       }
+    } else if(this.currentUser) {
+      this.userInfo.Tags = this.selectedInterestArr;
+      const tagsObj = {
+        Tags: this.selectedInterestArr
+      }
+      this.userApiService.updateUser(tagsObj)
+      .subscribe(
+        (data) => {
+          console.log("user updated", data)
+        },
+        (err) => console.log("there was an error updating the user", err)
+      )
     }
   }
 

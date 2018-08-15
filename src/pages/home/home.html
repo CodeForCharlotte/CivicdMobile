@@ -25,8 +25,8 @@
       <div class="userNameHead"><strong>{{userInfo?.DisplayName}}</strong></div>
       <div class="addressHead">{{userInfo?.City}}, {{userInfo?.State}}</div>
       <div class="checkedInBox" text-center>
-        <p>{{checkedInAmt}} Times</p>
-        <p>Check'd In</p>
+        <div>{{checkedInAmt}} Times</div>
+        <div>Check'd In</div>
       </div>
     </ion-col>
   </ion-row>
@@ -54,7 +54,7 @@
       <div *ngFor="let tags of secondColArr"><ion-badge clear class="tagStyle">#{{tags?.Name}}</ion-badge></div>
     </ion-col>
     <ion-col col-4 text-center>
-      <div *ngFor="let tags of thirdColArr"><ion-badge clear class="tagStyle">#{{tags?.Tags.Name}}</ion-badge></div>
+      <div *ngFor="let tags of thirdColArr"><ion-badge clear class="tagStyle">#{{tags?.Name}}</ion-badge></div>
     </ion-col>
   </ion-row>
 </ion-grid>
