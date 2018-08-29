@@ -220,7 +220,7 @@ export class OrgPostEventPage {
       DisplayTitle: form.value.DisplayTitle,
       Description: form.value.Description,
       CategoryName: form.value.Category,
-      StartTime: Date.now().toString(),
+      StartTime: "03/9/2018 10:45:06 AM",
       AddressDisplayName: form.value.AddressDisplayName,
       StreetAddressOne: form.value.StreetAddressOne,
       StreetAddressTwo: form.value.StreetAddressTwo,

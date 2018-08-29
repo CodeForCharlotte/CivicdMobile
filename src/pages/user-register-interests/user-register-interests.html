@@ -58,7 +58,10 @@
         <h3 *ngIf="selectedInterestArr.length == 0" (click)="skipTags()" class="skipLabel">Skip</h3>
       </ion-col>
       <ion-col col-4 text-right>
-          <ion-icon class="arrowIcon" *ngIf="selectedInterestArr.length > 0" (click)="swipeRightEvent()" color="success" icon-right name="arrow-forward"></ion-icon>
+          <ion-icon class="arrowIcon" *ngIf="selectedInterestArr.length > 0 && !updatingTags" (click)="swipeRightEvent()" color="success" icon-right name="arrow-forward"></ion-icon>
+          <div class="pleaseWaitStyle" *ngIf="updatingTags">
+            Please Wait...
+          </div>
       </ion-col>
     </ion-row>
   </ion-grid>

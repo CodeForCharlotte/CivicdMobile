@@ -85,27 +85,32 @@
     <hr/>
 
     <ion-card *ngFor="let events of suggestedEventsArr" (click)="selectEvent(events)">
-      <ion-row>
-        <ion-col col-8 padding>
-          <h2><strong><u>{{events.DisplayTitle}}</u></strong></h2>
-        </ion-col>
-        <ion-col col-4 padding>
-          <h3 text-right><span class="dateStyle">{{events.StartTime | date:"shortDate"}}</span></h3>
-          <h3 text-right><span class="dateStyle">{{events.StartTime | date:"shortTime"}}</span></h3>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col col-6>
-          <ion-card-content>
-            <div text-center><strong>{{events.AddressDisplayName}}</strong></div>
-          </ion-card-content>
-        </ion-col>
-        <ion-col col-6>
-          <ion-card-content text-center>
-              <p>{{events.CategoryName | uppercase}}</p>
-          </ion-card-content>
-        </ion-col>
-      </ion-row>
+      <div class="image-container">
+        <img class="imgBackgroundStyle" src="{{events.PhotoUrl}}" />
+        <div class="after">
+          <ion-row>
+            <ion-col col-8 padding>
+              <h2  class="headerColor"><strong><u>{{events.DisplayTitle}}</u></strong></h2>
+            </ion-col>
+            <ion-col col-4 padding>
+              <h3  class="headerColor"text-right><span class="dateStyle">{{events.StartTime | date:"shortDate"}}</span></h3>
+              <h3  class="headerColor"text-right><span class="dateStyle">{{events.StartTime | date:"shortTime"}}</span></h3>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-6>
+              <ion-card-content>
+                <div text-center><strong>{{events.AddressDisplayName}}</strong></div>
+              </ion-card-content>
+            </ion-col>
+            <ion-col col-6>
+              <ion-card-content text-center>
+                  <p class="headerColor">{{events.CategoryName | uppercase}}</p>
+              </ion-card-content>
+            </ion-col>
+          </ion-row>
+        </div>
+      </div>
     </ion-card>
 
   </ion-card>

@@ -31,6 +31,7 @@ export class UserRegisterInterestsPage implements OnInit {
   searchArr = [];
   myInput = "";
   selectedInterestArr = [];
+  updatingTags = false;
   isFinal = this.navParams.get("final");
   currentUser;
   userInfo;
@@ -173,6 +174,7 @@ export class UserRegisterInterestsPage implements OnInit {
       this.navCtrl.push(UserRegisterAboutPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
       }
     } else if(this.currentUser) {
+      this.updatingTags = true;
       this.userInfo.Tags = this.selectedInterestArr;
       const tagsObj = {
         Tags: this.selectedInterestArr
@@ -181,8 +183,13 @@ export class UserRegisterInterestsPage implements OnInit {
       .subscribe(
         (data) => {
           console.log("user updated", data)
+          this.navCtrl.push(UserRegisterFinalPage, {}, {animate: true, animation: "ios-transition", direction: "forward"});
+          this.updatingTags = false;
         },
-        (err) => console.log("there was an error updating the user", err)
+        (err) => {
+          console.log("there was an error updating the user", err);
+          this.updatingTags = false;
+        }
       )
     }
   }

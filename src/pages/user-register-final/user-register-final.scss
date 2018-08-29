@@ -40,6 +40,7 @@ page-user-register-final {
     border-width: 1px;
     border-color: black;
     font-family: sans-serif;
+    overflow: hidden;
   }
   .badgeColor {
     background: rgb(25,57,104);
@@ -49,5 +50,10 @@ page-user-register-final {
     margin-top: 10px;
     font-family: sans-serif;
     color: rgb(225,46,82);
+  }
+
+  .pleaseWaitStyle {
+    color: white;
+    font-family: sans-serif;
   }
 }
