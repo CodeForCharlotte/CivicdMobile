@@ -43,7 +43,6 @@ page-events-all {
 .card-background-page {
 
  ion-card {
-   position: relative;
    text-align: center;
    color: #ffffff;
 
@@ -52,34 +51,28 @@ page-events-all {
  .eventCard__heading2 {
   //  top: 52%;
    font-size: 2.0em;
-   width: 100%;
+   // width: 100%;
    font-weight: bold;
-   position: absolute;
  }
 
  .eventCard__heading3 {
    font-size: 1.0em;
   //  top: 62%;
-   width: 100%;
+   // width: 100%;
    color: #ffffff;
-   position: absolute;
  }
 
  .eventType__paragraph{
    font-size: 1.0rem;
    color: #ffffff;
-   position: absolute;
 
  }
 
- .eventType {
-   position: absolute;
- }
 
 .eventCard__heading2, .eventCard__heading3, .eventType__paragraph {
   // position: absolute;
   padding-left: 10px;
-  color: #ffffff;
+  color: #FFFFFF;
 
 }
 
@@ -93,15 +86,30 @@ page-events-all {
 
 
 
-.eventCard__heading3{
-  //  text-align: right;
+
+
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.image-container .after {
+  background-color: rgba(44,53,50, .75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  color: #FFFFFF;
  }
-
-
- // .eventCard {
- //   background-image: url("https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg?auto=compress&cs=tinysrgb&h=350");
- //   background-size: cover;
- //   background-repeat: none;
- // }
+  .imgBackgroundStyle {
+    height: 15rem;
+  }
+  .headerColor {
+    color: white;
+  }
 
 }
