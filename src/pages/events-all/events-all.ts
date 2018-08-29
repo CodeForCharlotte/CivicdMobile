@@ -63,7 +63,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28270",
     Tags: [{Name: "Liberal"}, {Name:"Conservative"}, {Name:"Moderate"}, {Name:"Activism"}],
-    ImageUrl: "assets/imgs/handshake.jpg"
+    PhotoUrl: "../../assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Dems For All",
@@ -79,7 +79,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28211",
     Tags: [{Name: "Transit"}, {Name:"Feminism"}, {Name:"Civil Rights"}, {Name:"Town Hall"}],
-    ImageUrl: "assets/imgs/handshake.jpg"
+    PhotoUrl: "../../assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Libs For Everyone",
@@ -95,7 +95,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28277",
     Tags: [{Name: "Taxes"}, {Name: "Moderate"}, {Name:"Voting Rights"}, {Name:"Inequality"}],
-    ImageUrl: "assets/imgs/handshake.jpg"
+    PhotoUrl: "../../assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Education For Us",
@@ -111,7 +111,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "28206",
     Tags: [{Name: "Police"}, {Name:"Privacy"}, {Name:"Nutrition"}],
-    ImageUrl: "assets/imgs/handshake.jpg"
+    PhotoUrl: "../../assets/imgs/handshake.jpg"
     },
     {
     OrganizationUserName: "Guns For Us",
@@ -127,7 +127,7 @@ export class EventsAllPage {
     State: "NC",
     Zip: "564245",
     Tags: [{Name: "Social Media"}, {Name:"Grass Roots"}, {Name:"Socialism"}],
-    ImageUrl: "assets/imgs/handshake.jpg"
+    PhotoUrl: "../../assets/imgs/handshake.jpg"
     }
  ];
 
@@ -164,6 +164,7 @@ export class EventsAllPage {
           this.removeFilterDups();
         }
       );
+      console.log("SUGGESTED EVENTS", this.suggestedEventsArr)
   }
 
   toggleFilterMenu() {
