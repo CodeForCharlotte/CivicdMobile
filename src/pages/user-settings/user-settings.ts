@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { TokenManagerService } from "../../services/token-manager.service";
+import { UserApiService } from "../../services/user-api.service";
+import { UserLoginPage } from "../user-login/user-login";
 
-/**
- * Generated class for the UserSettingsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -15,11 +12,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class UserSettingsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams,
+              private viewCtrl: ViewController,
+              private tokenManagerService: TokenManagerService,
+              private userApiService: UserApiService) {
   }
+  
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad UserSettingsPage');
+
   }
+
+
+  ionViewCanEnter() {
+    return this.userApiService.isLoggedIn();
+  }
+
+
 
 }

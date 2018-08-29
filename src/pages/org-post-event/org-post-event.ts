@@ -5,7 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { UserApiService } from "../../services/user-api.service";
 import { EventsApiService } from "../../services/events-api.service";
 import { TagsApiService } from "../../services/tags-api.service";
-import { OrgApiService } from "../../services/org-api.service";
+
 
 @IonicPage()
 @Component({
@@ -17,10 +17,11 @@ export class OrgPostEventPage {
   placeImage= "";
   imageLoad = false;
   imageUploaded = false;
-  allTagsArr = [{Name:"Liberal"}, {Name:"Conservative"}, {Name:"Moderate"}, {Name:"Activism"}, {Name:"Transit"}, {Name:"Feminism"}, {Name:"Civil Rights"}, {Name:"Town Hall"}, {Name:"Net Neutrality"}, {Name:"Taxes"}, {Name:"Voting Rights"}, {Name:"Inequality"}, {Name:"Income Gap"}, {Name:"Socialism"}, {Name:"Libertarism"}, {Name:"Affordable Housing"}, {Name:"Healthcare"}, {Name:"Obesity"}, {Name:"Mental Health"}, {Name:"Entitlements"}, {Name:"Police"}, {Name:"Privacy"}, {Name:"Internet Connectivity"}, {Name:"Nutrition"}, {Name:"Social Media"}, {Name:"Grassroots"}, {Name:"Small Business"}];
+  allTagsArr;
   searchArr = [];
   selectedTagsArr = [];
   myInput = "";
+  userInfo;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -29,8 +30,7 @@ export class OrgPostEventPage {
               private camera: Camera,
               private userApiService: UserApiService,
               private eventsApiService: EventsApiService,
-              private tagsApiService: TagsApiService,
-              private orgApiService: OrgApiService) {
+              private tagsApiService: TagsApiService) {
   }
 
   ionViewDidLoad() {
@@ -41,11 +41,20 @@ export class OrgPostEventPage {
     .subscribe(
       (data) => {
         console.log("data", data);
+        this.allTagsArr = data;
       },
       (err) => console.log("there was an error getting tags", err)
     )
 
-    
+    this.userApiService.user$
+    .subscribe(
+      (info) => {
+        this.userInfo = info;
+      },
+      (err) => console.log("there was an error getting user informatino", err)
+    )
+
+
 
   }
 
@@ -170,7 +179,7 @@ export class OrgPostEventPage {
     //checks to remove tags that do not match the string entered in the search input.
     if (val && val.trim() !== '') {
       this.searchArr = this.searchArr.filter(function(item) {
-        return item.toLowerCase().includes(val.toLowerCase());
+        return item.Name.toLowerCase().includes(val.toLowerCase());
       });
     }
   }
@@ -210,18 +219,21 @@ export class OrgPostEventPage {
     var postEventObj = {
       DisplayTitle: form.value.DisplayTitle,
       Description: form.value.Description,
-      CategoryName: parseInt(form.value.CategoryName),
-      PhotoUrl: "testPhotoUrl",
-      StartTime: Date.now(),
-      EndTime: "Test End Time",
+      CategoryName: form.value.Category,
+      StartTime: Date.now().toString(),
       AddressDisplayName: form.value.AddressDisplayName,
       StreetAddressOne: form.value.StreetAddressOne,
       StreetAddressTwo: form.value.StreetAddressTwo,
       City: form.value.City,
       State: form.value.State,
-      ZipCode: parseInt(form.value.ZipCode),
-      Tags: this.selectedTagsArr
-    };
+      ZipCode: form.value.ZipCode,
+      Tags: this.selectedTagsArr,
+      Organization: {
+        Email: this.userInfo.Email
+      }
+
+    }
+
 
     console.log(postEventObj);
 
