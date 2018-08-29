@@ -34,25 +34,28 @@ $app-direction: ltr;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary:    #488aff,
-  secondary:  #32db64,
+  primary:    #193968,
+  secondary:  #E12E52,
   danger:     #f53d3d,
   light:      #f4f4f4,
   dark:       #222,
   neon:       #39ff14,
   darkRed:    #ae0202,
   darkGreen:  #256b2c,
+  success:    #4C8DCA,
+  white:      rgb(244,247,246),
+
   success:    #2ca647,
   white:      rgb(244,247,246),
   defaultMenuColor: rgb(80,143,203)
+
 );
 
 
 // App iOS Variables
 // --------------------------------------------------
 // iOS only Sass variables can go here
-
-
+// $card-ios-background-color:map-get($colors, primary);
 
 
 // App Material Design Variables

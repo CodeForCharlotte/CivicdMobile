@@ -1,10 +1,107 @@
 page-events-all {
-  .dateStyle{
-    text-align: right;
-  }
+
   .funnelStyle {
-    font-size: 40px;
+    font-size: 32px;
     margin-top: 5px;
   }
+
+.item-ios, .item-md, .item-wp {
+  background-color: #E12E52;
+  color: #FFFFFF;
+}
+// ion-card {
+//    position: relative;
+//    text-align: center;
+//  }
+
+ // .eventCard {
+ //   padding: 10px;
+ // }
+
+ // .eventCard__paragraph {
+ //  //  background-color: #E12E52;
+ //   color: #ffffff;
+ //   padding: 5px;
+ // }
+//  .eventType {
+//    position: absolute;
+//    z-index: -1;
+//   left: 0;
+//   height: 0.5em;
+//   position: absolute;
+//   right: 0;
+//   top: 0.35em;
+// }
+ //
+ // .eventType__paragraph{
+ //   position: relative;
+ // }
+
+
+}
+
+.card-background-page {
+
+ ion-card {
+   position: relative;
+   text-align: center;
+   color: #ffffff;
+
+ }
+
+ .eventCard__heading2 {
+  //  top: 52%;
+   font-size: 2.0em;
+   width: 100%;
+   font-weight: bold;
+   position: absolute;
+ }
+
+ .eventCard__heading3 {
+   font-size: 1.0em;
+  //  top: 62%;
+   width: 100%;
+   color: #ffffff;
+   position: absolute;
+ }
+
+ .eventType__paragraph{
+   font-size: 1.0rem;
+   color: #ffffff;
+   position: absolute;
+
+ }
+
+ .eventType {
+   position: absolute;
+ }
+
+.eventCard__heading2, .eventCard__heading3, .eventType__paragraph {
+  // position: absolute;
+  padding-left: 10px;
+  color: #ffffff;
+
+}
+
+.eventType {
+   background-color: #E12E52;
+   padding: 2px;
+   color: #FFFFFF;
+   text-transform: uppercase;
+   width: 50%;
+}
+
+
+
+.eventCard__heading3{
+  //  text-align: right;
+ }
+
+
+ // .eventCard {
+ //   background-image: url("https://images.pexels.com/photos/1020315/pexels-photo-1020315.jpeg?auto=compress&cs=tinysrgb&h=350");
+ //   background-size: cover;
+ //   background-repeat: none;
+ // }
 
 }
